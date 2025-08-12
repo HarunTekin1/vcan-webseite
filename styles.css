@@ -26,7 +26,8 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 /* Header */
 .site-header { position:sticky; top:0; z-index:500; display:flex; align-items:center; justify-content:space-between; padding:0.9rem 1.4rem; background:rgba(255,255,255,0.82); backdrop-filter:blur(10px); border-bottom:1px solid #e1eff0; }
 .brand { display:flex; align-items:center; gap:0.65rem; font-weight:600; letter-spacing:0.5px; }
-.logo-circle { width:42px; height:42px; background:var(--c-gradient); color:#fff; display:flex; align-items:center; justify-content:center; border-radius:50%; font-weight:700; font-size:1.15rem; box-shadow:var(--shadow-s); }
+.logo-circle { display:none; }
+.logo img { display:block; width:40px; height:40px; aspect-ratio:1; border-radius:8px; box-shadow:var(--shadow-s); background:#0097a7; }
 .app-name { font-size:1.15rem; color:var(--c-primary); font-weight:700; }
 
 .main-nav { position:relative; }
