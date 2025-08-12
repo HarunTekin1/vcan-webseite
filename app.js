@@ -33,3 +33,35 @@
     if(!nav.contains(e.target) && e.target !== toggle) close();
   });
 })();
+
+// Theme toggle + persistence
+(function(){
+  const btn = document.getElementById('themeToggle');
+  if(!btn) return;
+  const root = document.documentElement;
+  const STORAGE_KEY = 'vcan-theme';
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if(saved === 'dark') root.classList.add('dark');
+  if(saved === 'light') root.classList.add('light');
+  function syncLabel(){
+    const dark = root.classList.contains('dark');
+    btn.textContent = dark? 'Light':'Dark';
+    btn.setAttribute('aria-pressed', dark? 'true':'false');
+  }
+  syncLabel();
+  btn.addEventListener('click', ()=>{
+    const dark = root.classList.toggle('dark');
+    if(dark) root.classList.remove('light');
+    localStorage.setItem(STORAGE_KEY, dark? 'dark':'light');
+    syncLabel();
+  });
+})();
+
+// Service Worker registration (progressive)
+(function(){
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('sw.js').catch(()=>{/* ignore */});
+    });
+  }
+})();
