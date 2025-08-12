@@ -2,7 +2,8 @@
 const CACHE_NAME = 'vcan-static-v1';
 const ASSETS = [
   'index.html','styles.css','app.js','manifest.json',
-  'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png'
+  'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png',
+  'assets/favicon.svg','assets/favicon-16.png','assets/favicon-32.png','assets/apple-touch-icon.png','assets/favicon.ico'
 ];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)));

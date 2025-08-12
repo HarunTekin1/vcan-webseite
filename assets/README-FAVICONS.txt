@@ -1,0 +1,1 @@
+Placeholder note: The PNG and ICO favicon variants (favicon-16.png, favicon-32.png, apple-touch-icon.png, favicon.ico) still need to be generated from the source logo (vcan-logo.jpg or favicon.svg). Until then, browsers will fall back to existing icons where possible. Replace these placeholder references with actual files for full coverage.
