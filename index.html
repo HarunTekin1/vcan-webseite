@@ -52,8 +52,13 @@
     <main id="main" tabindex="-1">
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-media">
-                <!-- Hero Bild (WebP-Quelle entfernt, wartet auf neues Bild) -->
-                <img src="assets/hero-placeholder.jpg" alt="Symbolbild für Gemeinschaft – Menschen im Austausch" loading="lazy" decoding="async" width="960" height="640" />
+                <!-- Neue Hero Illustration: bitte Dateien speichern als assets/hero-community.jpg und optional hero-community.webp in verschiedenen Größen -->
+                <picture>
+                    <!-- Größere Breiten zuerst für Browser Auswahl -->
+                    <source type="image/webp" srcset="assets/hero-community-1280.webp 1280w, assets/hero-community-960.webp 960w, assets/hero-community-640.webp 640w, assets/hero-community-320.webp 320w" sizes="(min-width:1200px) 960px, (min-width:800px) 70vw, 100vw" />
+                    <source type="image/jpeg" srcset="assets/hero-community-1280.jpg 1280w, assets/hero-community-960.jpg 960w, assets/hero-community-640.jpg 640w, assets/hero-community-320.jpg 320w" sizes="(min-width:1200px) 960px, (min-width:800px) 70vw, 100vw" />
+                    <img src="assets/hero-community.jpg" alt="Illustration: Unterstützung, Austausch und vertrauensvolle Verbindung" loading="lazy" decoding="async" width="960" height="640" />
+                </picture>
             </div>
             <div class="hero-content">
                 <h1 id="hero-title">Menschlichkeit vernetzt</h1>
