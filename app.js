@@ -1,7 +1,8 @@
 // VCan minimal interactivity: nav toggle & focus trap helper
 (function(){
   const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('primaryNav');
+  // Robust: entweder explizite ID oder erstes Element mit .main-nav
+  const nav = document.getElementById('primaryNav') || document.querySelector('.main-nav');
   if(!toggle || !nav) return;
 
   function close(){
