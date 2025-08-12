@@ -78,6 +78,14 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 .card h3 { margin:0 0 0.55rem; font-size:1.05rem; color:var(--c-primary); }
 .card p { margin:0; font-size:0.88rem; line-height:1.35; color:var(--c-text-soft); }
 
+/* Mission Section */
+.mission { padding:clamp(2.5rem,6vw,4rem) clamp(1rem,6vw,4rem); background:#ffffff; }
+.mission h2 { margin:0 0 1.4rem; font-size:clamp(1.9rem,4vw,2.5rem); color:var(--c-primary); }
+.mission h3 { margin:2rem 0 0.6rem; font-size:1.05rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--c-text-soft); }
+.mission p { max-width:860px; margin:0 0 1rem; line-height:1.55; font-size:0.96rem; }
+.mission ul { padding-left:1.1rem; max-width:820px; margin:0 0 1.2rem; }
+.mission li { margin:0 0 0.35rem; font-size:0.92rem; }
+
 /* CTA band */
 .cta-band { text-align:center; padding:clamp(2.8rem,6vw,4.8rem) 1rem; background:var(--c-gradient); color:#fff; }
 .cta-band h2 { margin:0 0 1.1rem; font-size:clamp(2rem,5vw,2.8rem); }
