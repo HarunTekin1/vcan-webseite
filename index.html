@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VCan – Menschlichkeit vernetzt</title>
+    <meta name="description" content="VCan – Die soziale App: verbinden, unterstützen, gemeinsam wachsen." />
+    <meta name="theme-color" content="#0097a7" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="assets/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <header class="site-header" role="banner">
+        <div class="brand">
+            <div class="logo-circle" aria-hidden="true">V</div>
+            <span class="app-name">VCan</span>
+        </div>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="navToggle">Menü</button>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="admin.html" class="admin-link">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-media">
+                <img src="assets/hero-placeholder.jpg" alt="Symbolbild für Gemeinschaft – Menschen im Austausch" />
+            </div>
+            <div class="hero-content">
+                <h1 id="hero-title">Menschlichkeit vernetzt</h1>
+                <p class="tagline">Sicher. Unterstützend. Barrierefrei. Für alle Generationen.</p>
+                <div class="cta-row">
+                    <a href="vision.html" class="btn primary">Unsere Vision</a>
+                    <a href="kontakt.html" class="btn ghost">Kontakt</a>
+                </div>
+            </div>
+        </section>
+        <section class="values" aria-labelledby="values-title">
+            <h2 id="values-title">Was uns leitet</h2>
+            <div class="value-grid">
+                <article class="value-item"><h3>Respekt</h3><p>Würde & Augenhöhe in jeder Begegnung.</p></article>
+                <article class="value-item"><h3>Solidarität</h3><p>Gemeinsam statt allein – lokal & global.</p></article>
+                <article class="value-item"><h3>Empathie</h3><p>Zuhören, verstehen, handeln.</p></article>
+                <article class="value-item"><h3>Barrierefreiheit</h3><p>Klar, zugänglich, inklusiv.</p></article>
+            </div>
+        </section>
+        <section class="feature-preview" aria-labelledby="features-title">
+            <h2 id="features-title">Ein erster Blick</h2>
+            <div class="cards">
+                <div class="card"><h3>Community</h3><p>Gruppen & Räume für Austausch und Stabilität.</p></div>
+                <div class="card"><h3>Verifizierung</h3><p>Sicherheit durch geprüfte Profile.</p></div>
+                <div class="card"><h3>Matching</h3><p>Finde Menschen mit ähnlichen Situationen.</p></div>
+                <div class="card"><h3>Support</h3><p>Moderation & Schutz vor Missbrauch.</p></div>
+            </div>
+        </section>
+        <section class="cta-band" aria-labelledby="cta-join-title">
+            <h2 id="cta-join-title">Bereit für Veränderung?</h2>
+            <p>VCan verbindet Menschen auf dem Weg zu Stabilität, Austausch und neuen Chancen.</p>
+            <a href="vision.html" class="btn contrast">Mehr erfahren</a>
+        </section>
+    </main>
+    <footer class="site-footer" aria-label="Footer">
+        <div class="footer-cols">
+            <div><strong>VCan</strong><br />Menschlichkeit vernetzt.</div>
+            <nav aria-label="Footer Navigation">
+                <ul class="footer-links">
+                    <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="vision.html">Vision</a></li>
+                </ul>
+            </nav>
+            <div class="legal">&copy; 2025 VCan. Alle Rechte vorbehalten.</div>
+        </div>
+    </footer>
+    <script src="app.js" defer></script>
+    <noscript>Bitte JavaScript aktivieren, um alle Funktionen zu nutzen.</noscript>
+</body>
+</html>

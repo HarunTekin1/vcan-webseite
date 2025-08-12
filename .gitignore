@@ -1,0 +1,14 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+
+# Build / Cache (falls später Tools hinzukommen)
+dist/
+.cache/
+node_modules/
+
+# Env / Secrets (derzeit keine vorhanden)
+.env
+.env.*
