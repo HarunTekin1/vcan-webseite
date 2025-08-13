@@ -1,45 +1,21 @@
 {
-  "id": "/",
-  "name": "VCan – Menschlichkeit vernetzt",
+  "name": "VCan",
   "short_name": "VCan",
-  "description": "VCan – Die soziale Plattform, die Menschen respektvoll verbindet: Austausch, gegenseitige Unterstützung, verifizierte Profile, lokale Angebote und Events – sicher, barrierearm und solidarisch.",
+  "description": "VCan – Verbinde dich, informiere dich und entdecke lokale Events & Angebote.",
   "lang": "de-DE",
-  "dir": "ltr",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0097a7",
   "theme_color": "#0097a7",
   "orientation": "portrait-primary",
-  "categories": ["social", "lifestyle", "productivity"],
+  "shortcuts": [
+    {"name": "Features","url": "features.html","icons":[{"src":"assets/icon-192.png","sizes":"192x192"}]},
+    {"name": "Vision","url": "vision.html","icons":[{"src":"assets/icon-192.png","sizes":"192x192"}]}
+  ],
   "icons": [
     { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "assets/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
     { "src": "assets/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ],
-  "shortcuts": [
-    {
-      "name": "Vision",
-      "short_name": "Vision",
-      "description": "Unsere Leitidee lesen",
-      "url": "vision.html"
-    },
-    {
-      "name": "Features",
-      "short_name": "Features",
-      "description": "Geplante Funktionen ansehen",
-      "url": "features.html"
-    },
-    {
-      "name": "Kontakt",
-      "short_name": "Kontakt",
-      "description": "Nachricht senden",
-      "url": "kontakt.html"
-    }
-  ],
-  "screenshots": [
-    { "src": "assets/screenshot-home.png", "sizes": "1200x800", "type": "image/png", "label": "Startseite – Einstieg" },
-    { "src": "assets/screenshot-features.png", "sizes": "1200x800", "type": "image/png", "label": "Feature-Übersicht" }
   ]
 }

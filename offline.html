@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Offline – VCan</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .offline-wrap{max-width:620px;margin:3rem auto;padding:2rem 1.5rem;background:var(--c-surface);border-radius:var(--radius-l);box-shadow:var(--shadow-m);text-align:center}
+    .offline-wrap h1{margin-top:0;font-size:1.9rem;color:var(--c-primary)}
+    .offline-actions{margin-top:1.4rem;display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+  </style>
+</head>
+<body>
+  <main class="offline-wrap">
+    <h1>Du bist offline</h1>
+    <p>Keine Netzwerkverbindung. Inhalte, die bereits besucht wurden, stehen ggf. weiterhin zur Verfügung.</p>
+    <div class="offline-actions">
+      <a class="btn primary" href="index.html">Startseite</a>
+      <button class="btn" onclick="location.reload()">Erneut versuchen</button>
+    </div>
+  </main>
+</body>
+</html>

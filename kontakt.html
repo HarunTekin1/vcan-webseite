@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VCan – Kontakt</title>
+  <meta name="description" content="Kontakt zur VCan Initiative." />
+  <link rel="canonical" href="https://example.com/kontakt.html" />
+  <meta property="og:title" content="VCan – Kontakt" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:description" content="Nimm Kontakt mit der VCan Initiative auf." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/kontakt.html" />
+  <meta property="og:image" content="assets/hero-placeholder.jpg" />
+  <meta property="og:locale" content="de_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VCan – Kontakt" />
+  <meta name="twitter:description" content="Nimm Kontakt mit der VCan Initiative auf." />
+  <meta name="twitter:image" content="assets/hero-placeholder.jpg" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .contact-wrap { max-width:760px; margin:0 auto; background:var(--c-surface); padding:2rem 1.5rem 2.4rem; border-radius:var(--radius-l); box-shadow:var(--shadow-m); }
+    form { display:grid; gap:1rem; }
+    label { font-weight:600; font-size:0.9rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--c-text-soft); }
+    input, textarea { width:100%; padding:0.85rem 0.9rem; border:1px solid #c9e3e6; border-radius:var(--radius-s); font:inherit; background:#f7fcfd; }
+    input:focus, textarea:focus { outline:none; border-color:var(--c-primary); box-shadow:var(--shadow-glow); }
+    textarea { min-height:140px; resize:vertical; }
+    .status-msg { font-size:0.85rem; margin-top:0.25rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+  <div class="brand"><a href="index.html" class="logo" aria-label="VCan Startseite"><img src="assets/vcan-logo.jpg" alt="VCan Logo" width="40" height="40" loading="lazy" decoding="async" /></a><span class="app-name">VCan</span><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button></div>
+  <nav class="main-nav" id="primaryNav" aria-label="Hauptnavigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="navToggle">Menü</button>
+      <ul id="nav-links" class="nav-links">
+  <li><a href="index.html" aria-current="false">Home</a></li>
+  <li><a href="vision.html" aria-current="false">Vision</a></li>
+  <li><a href="features.html" aria-current="false">Features</a></li>
+  <li><a href="kontakt.html" class="active" aria-current="page">Kontakt</a></li>
+  <li><a href="impressum.html" aria-current="false">Impressum</a></li>
+        <li><a href="admin.html" class="admin-link">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="feature-preview" aria-labelledby="contact-title">
+      <h1 id="contact-title">Kontakt</h1>
+      <p style="max-width:760px;margin:0 auto 1.4rem;">Fragen, Kooperation oder Feedback? Schreib uns eine Nachricht.</p>
+      <div class="contact-wrap">
+        <form id="contactForm" novalidate>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Dein Name" />
+            <div class="status-msg" data-for="name"></div>
+          </div>
+          <div>
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required placeholder="du@example.com" />
+            <div class="status-msg" data-for="email"></div>
+          </div>
+          <div>
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" required placeholder="Deine Nachricht..."></textarea>
+            <div class="status-msg" data-for="message"></div>
+          </div>
+          <button class="btn primary" type="submit">Senden</button>
+          <div id="formStatus" aria-live="polite" style="margin-top:0.5rem;font-size:0.85rem;"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" aria-label="Footer">
+    <div class="footer-cols">
+      <div><strong>VCan</strong><br/>Menschlichkeit vernetzt.</div>
+      <nav aria-label="Footer Navigation"><ul class="footer-links"><li><a href="impressum.html">Impressum</a></li><li><a href="kontakt.html">Kontakt</a></li><li><a href="vision.html">Vision</a></li></ul></nav>
+      <div class="legal">&copy; 2025 VCan. Alle Rechte vorbehalten.</div>
+    </div>
+  </footer>
+  <script src="app.js" defer></script>
+  <script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const statusBox = document.getElementById('formStatus');
+      const fields = ['name','email','message'];
+      function showError(id,msg){
+        const el = document.querySelector(`.status-msg[data-for="${id}"]`);
+        if(el){ el.textContent = msg || ''; el.style.color = msg? '#d32f2f':'inherit'; }
+      }
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        let valid = true;
+        fields.forEach(f=>{ showError(f,''); });
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        if(!name){ showError('name','Name fehlt'); valid=false; }
+        if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ showError('email','Gültige E-Mail nötig'); valid=false; }
+        if(!message){ showError('message','Nachricht fehlt'); valid=false; }
+        if(!valid){ statusBox.textContent = 'Bitte Fehler korrigieren.'; return; }
+        statusBox.textContent = 'Sende (Demo) ...';
+        setTimeout(()=>{ statusBox.textContent = 'Nachricht gesendet (Demo, kein echter Versand).'; form.reset(); }, 900);
+      });
+    })();
+  </script>
+</body>
+</html>

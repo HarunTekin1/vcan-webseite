@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VCan – Admin (Coming Soon)</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Administrationsbereich – in Vorbereitung." />
+  <link rel="canonical" href="https://example.com/admin.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0097a7" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <a href="index.html" class="logo" aria-label="VCan Startseite"><img src="assets/vcan-logo.jpg" alt="VCan Logo" width="40" height="40" decoding="async" /></a>
+      <span class="app-name">VCan</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button>
+    </div>
+    <nav class="main-nav" id="primaryNav" aria-label="Hauptnavigation">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="navToggle">Menü</button>
+      <ul id="nav-links" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vision.html">Vision</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="admin.html" class="active" aria-current="page">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1" style="max-width:860px;margin:2.5rem auto;padding:0 1.25rem;">
+    <h1>Admin Bereich</h1>
+    <p>Dieser Bereich wird vorbereitet. Hier folgen künftig:</p>
+    <ul>
+      <li>Nutzer- & Content-Moderation</li>
+      <li>Gruppen- und Rollenverwaltung</li>
+      <li>Statistiken & Community-Gesundheit</li>
+    </ul>
+    <p><strong>Status:</strong> Noch nicht öffentlich verfügbar.</p>
+  </main>
+  <footer class="site-footer" aria-label="Footer">
+    <div class="footer-cols">
+      <div><strong>VCan</strong><br/>Menschlichkeit vernetzt.</div>
+      <nav aria-label="Footer Navigation"><ul class="footer-links"><li><a href="impressum.html">Impressum</a></li><li><a href="kontakt.html">Kontakt</a></li><li><a href="vision.html">Vision</a></li></ul></nav>
+      <div class="legal">&copy; 2025 VCan. Alle Rechte vorbehalten.</div>
+    </div>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – VConnect</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Roboto', Arial, sans-serif; background: #e0f7fa; margin: 0; color: #222; }
+    main { max-width: 700px; margin: 3rem auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 2rem; }
+    h1 { color: #0097a7; }
+    nav {
+      position: fixed;
+      top: 32px;
+      left: 0;
+      z-index: 2000;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+      padding: 2.2rem 1.1rem 1.2rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      align-items: flex-start;
+      min-width: 160px;
+    }
+    nav a {
+      color: #0097a7;
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.7rem;
+      transition: background 0.18s, color 0.18s;
+    }
+    nav a.home-link {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      background: #0097a7;
+      padding: 0.5rem 1.2rem;
+      border-radius: 18px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,151,167,0.10);
+    }
+    nav a.home-link:hover {
+      background: #00bfae;
+      color: #fff;
+    }
+    nav a:hover {
+      background: #e0f7fa;
+      color: #00796b;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="home-link" id="home-nav-link">Home</a>
+  <a href="kontakt.html">Kontakt</a>
+  <a href="vision.html">Unsere Vision</a>
+  <a href="impressum.html">Impressum</a>
+  <a href="admin.html" style="color:#d32f2f; font-weight:700;">Admin</a>
+</nav>
+<main>
+  <h1>Admin-Bereich</h1>
+  <p>Hier entsteht der Admin-Bereich für VConnect.<br>Später können hier Einstellungen und Verwaltungsfunktionen ergänzt werden.</p>
+</main>
+
+<script>
+  // Home-Link in Navigation nur anzeigen, wenn nicht auf der Startseite
+  (function() {
+    var isHome = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '';
+    var homeLink = document.getElementById('home-nav-link');
+    if (isHome && homeLink) {
+      homeLink.style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
