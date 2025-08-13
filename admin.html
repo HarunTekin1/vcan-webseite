@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     .gate-overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.3);backdrop-filter:blur(2px);padding:1rem;z-index:9999}
+  .gate-overlay[hidden]{display:none!important}
+  main[hidden]{display:none!important}
     .gate-card{background:var(--c-surface,#fff);color:var(--c-text,#183034);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:1.2rem 1.2rem 1rem;max-width:360px;width:100%}
     .gate-card h2{margin:.2rem 0 .6rem;font-size:1.2rem}
     .gate-card p{margin:0 0 .8rem;opacity:.9}
@@ -132,10 +134,10 @@
       const msg = document.getElementById('adminGateMsg');
       const logoutBtn = document.getElementById('adminLogout');
 
-      function showGate(){ gate.hidden=false; }
-      function hideGate(){ gate.hidden=true; }
-      function showMain(){ main.hidden=false; }
-      function hideMain(){ main.hidden=true; }
+  function showGate(){ gate.hidden=false; gate.style.display='grid'; gate.setAttribute('aria-hidden','false'); }
+  function hideGate(){ gate.hidden=true; gate.style.display='none'; gate.setAttribute('aria-hidden','true'); }
+  function showMain(){ main.hidden=false; main.style.display='block'; }
+  function hideMain(){ main.hidden=true; main.style.display='none'; }
 
       async function sha256Hex(str){
         try{
