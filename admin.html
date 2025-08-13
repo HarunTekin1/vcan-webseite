@@ -14,6 +14,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gate-overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.3);backdrop-filter:blur(2px);padding:1rem;z-index:9999}
+    .gate-card{background:var(--c-surface,#fff);color:var(--c-text,#183034);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:1.2rem 1.2rem 1rem;max-width:360px;width:100%}
+    .gate-card h2{margin:.2rem 0 .6rem;font-size:1.2rem}
+    .gate-card p{margin:0 0 .8rem;opacity:.9}
+    .gate-card input{width:100%;padding:.75rem .85rem;border:1px solid #c9e3e6;border-radius:8px;background:#f7fcfd;font:inherit}
+    .gate-card button{margin-top:.8rem}
+    .gate-status{min-height:1.1rem;font-size:.85rem;margin-top:.5rem}
+    .gate-actions{display:flex;gap:.6rem;justify-content:flex-end}
+    .admin-toolbar{display:flex;justify-content:space-between;align-items:center;gap:.8rem;margin:.4rem 0 1rem}
+    .admin-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;margin:1rem 0}
+    .admin-card{background:var(--c-surface,#fff);border:1px solid #ddf0f2;border-radius:10px;padding:.9rem;box-shadow:var(--shadow-s,0 2px 6px rgba(0,0,0,.05))}
+    .admin-card h3{margin:0 0 .35rem;font-size:.9rem;letter-spacing:.4px;text-transform:uppercase;color:var(--c-text-soft,#326a70)}
+    .admin-card .value{font-weight:700;font-size:1.35rem}
+    .admin-quick{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 1.2rem}
+    .chip-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .7rem;border-radius:999px;border:1px solid #c9e3e6;background:#f7fcfd;color:inherit;text-decoration:none;font-weight:600;font-size:.85rem}
+    .admin-activities{background:var(--c-surface,#fff);border:1px solid #ddf0f2;border-radius:10px;padding:1rem}
+    .admin-activities ul{margin:.6rem 0 0;padding-left:1.1rem}
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -35,15 +54,50 @@
       </ul>
     </nav>
   </header>
-  <main id="main" tabindex="-1" style="max-width:860px;margin:2.5rem auto;padding:0 1.25rem;">
-    <h1>Admin Bereich</h1>
-    <p>Dieser Bereich wird vorbereitet. Hier folgen künftig:</p>
-    <ul>
-      <li>Nutzer- & Content-Moderation</li>
-      <li>Gruppen- und Rollenverwaltung</li>
-      <li>Statistiken & Community-Gesundheit</li>
-    </ul>
-    <p><strong>Status:</strong> Noch nicht öffentlich verfügbar.</p>
+  <div id="adminGate" class="gate-overlay" role="dialog" aria-modal="true" aria-labelledby="adminGateTitle">
+    <div class="gate-card">
+      <h2 id="adminGateTitle">Admin‑Zugang</h2>
+      <p>Bitte Passwort eingeben, um den Admin‑Bereich zu öffnen.</p>
+      <input id="adminPwd" type="password" placeholder="Passwort" autocomplete="current-password" />
+      <div class="gate-actions">
+        <button class="btn" id="adminCancel" type="button">Abbrechen</button>
+        <button class="btn primary" id="adminLogin" type="button">Anmelden</button>
+      </div>
+      <div id="adminGateMsg" class="gate-status" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1" style="max-width:860px;margin:2.5rem auto;padding:0 1.25rem;" hidden>
+    <div class="admin-toolbar">
+      <h1 style="margin:0">Admin Bereich</h1>
+      <div>
+        <button class="btn" id="adminLogout" type="button" title="Abmelden">Abmelden</button>
+      </div>
+    </div>
+    <p>Dieser Bereich ist passwortgeschützt und befindet sich im Aufbau.</p>
+
+    <div class="admin-cards" aria-label="Statusübersicht">
+      <div class="admin-card"><h3>Nutzer gesamt</h3><div class="value" id="mUsers">0</div></div>
+      <div class="admin-card"><h3>Aktive heute</h3><div class="value" id="mActive">0</div></div>
+      <div class="admin-card"><h3>Offene Meldungen</h3><div class="value" id="mReports">0</div></div>
+      <div class="admin-card"><h3>Uptime</h3><div class="value" id="mUptime">100%</div></div>
+    </div>
+
+    <div class="admin-quick" aria-label="Schnellaktionen">
+      <a href="#" class="chip-btn" role="button">Nutzerverwaltung</a>
+      <a href="#" class="chip-btn" role="button">Meldungen prüfen</a>
+      <a href="#" class="chip-btn" role="button">Rollen & Rechte</a>
+      <a href="#" class="chip-btn" role="button">Wartungsmodus</a>
+    </div>
+
+    <div class="admin-activities" aria-labelledby="activitiesTitle">
+      <h2 id="activitiesTitle" style="margin:.2rem 0 .4rem;font-size:1.05rem;">Letzte Aktivitäten (Demo)</h2>
+      <ul>
+        <li>12:03 – Systemcheck OK</li>
+        <li>11:55 – Testmeldung geschlossen</li>
+        <li>11:20 – Rollen & Rechte überprüft</li>
+      </ul>
+    </div>
   </main>
   <footer class="site-footer" aria-label="Footer">
     <div class="footer-cols">
@@ -66,5 +120,52 @@
     </div>
   </footer>
   <script src="app.js" defer></script>
+  <script>
+    (function(){
+      const ADMIN_HASH = '2342f81c80f1211258bdf17e18aad1062b131c5c3f2b6a075ced1826f55efa01';
+      const gate = document.getElementById('adminGate');
+      const main = document.getElementById('main');
+      const input = document.getElementById('adminPwd');
+      const loginBtn = document.getElementById('adminLogin');
+      const cancelBtn = document.getElementById('adminCancel');
+      const msg = document.getElementById('adminGateMsg');
+      const logoutBtn = document.getElementById('adminLogout');
+
+      function showGate(){ gate.hidden=false; }
+      function hideGate(){ gate.hidden=true; }
+      function showMain(){ main.hidden=false; }
+      function hideMain(){ main.hidden=true; }
+
+      async function sha256Hex(str){
+        const enc = new TextEncoder().encode(str);
+        const buf = await crypto.subtle.digest('SHA-256', enc);
+        return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+      }
+
+      async function tryLogin(){
+        msg.textContent = '';
+        const pwd = (input.value||'').trim();
+        if(!pwd){ msg.textContent = 'Passwort fehlt.'; return; }
+        try{
+          const hash = await sha256Hex(pwd);
+          if(hash === ADMIN_HASH){
+            sessionStorage.setItem('adminAuth', hash);
+            hideGate(); showMain(); input.value=''; msg.textContent='';
+          } else {
+            msg.textContent = 'Falsches Passwort.';
+          }
+        }catch(e){ msg.textContent = 'Technischer Fehler beim Prüfen.'; }
+      }
+
+      function logout(){ sessionStorage.removeItem('adminAuth'); hideMain(); showGate(); }
+
+      if(sessionStorage.getItem('adminAuth') === ADMIN_HASH){ hideGate(); showMain(); } else { showGate(); hideMain(); }
+
+      loginBtn?.addEventListener('click', tryLogin);
+      input?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ tryLogin(); }});
+      cancelBtn?.addEventListener('click', ()=>{ input.value=''; msg.textContent=''; input.focus(); });
+      logoutBtn?.addEventListener('click', logout);
+    })();
+  </script>
 </body>
 </html>
