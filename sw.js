@@ -1,5 +1,5 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v27';
+const CACHE_NAME = 'vcan-static-v28';
 const ASSETS = [
   'index.html','features.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html',
   'partner.html','en/index.html',
