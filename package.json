@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Startseite & Grundgerüst der VCan Web-Präsenz.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"No tests\"",
-    "optimize:images": "node scripts/optimize-images.js"
+  "optimize:images": "node scripts/optimize-images.js"
   },
   "repository": {
     "type": "git",
