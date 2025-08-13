@@ -138,6 +138,7 @@
   function hideGate(){ gate.hidden=true; gate.style.display='none'; gate.setAttribute('aria-hidden','true'); }
   function showMain(){ main.hidden=false; main.style.display='block'; }
   function hideMain(){ main.hidden=true; main.style.display='none'; }
+  function clearAuth(){ try{ sessionStorage.removeItem('adminAuth'); }catch(_){} }
 
       async function sha256Hex(str){
         try{
@@ -176,6 +177,16 @@
       input?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ tryLogin(); }});
       cancelBtn?.addEventListener('click', ()=>{ input.value=''; msg.textContent=''; input.focus(); });
       logoutBtn?.addEventListener('click', logout);
+
+      // Auto-Logout beim Verlassen der Seite (auch bei BFCache-Rückkehr)
+      window.addEventListener('pagehide', clearAuth);
+      window.addEventListener('beforeunload', clearAuth);
+      document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState === 'hidden') clearAuth(); });
+      window.addEventListener('pageshow', (e)=>{
+        if(e.persisted){ // aus dem Back-Forward-Cache zurückgekehrt
+          clearAuth(); showGate(); hideMain();
+        }
+      });
     })();
   </script>
 </body>
