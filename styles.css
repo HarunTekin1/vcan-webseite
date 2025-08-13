@@ -81,10 +81,11 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 .tagline { font-size:clamp(1.05rem,1.7vw,1.25rem); margin:0 0 1.4rem; font-weight:500; color:#e8feff; }
 .cta-row { display:flex; gap:1rem; flex-wrap:wrap; }
 /* Store badges (provisorisch) */
-.store-badges .btn { font-size:0.9rem; letter-spacing:.5px; }
-.btn.store-google { background:#202124; color:#fff; }
-.btn.store-apple { background:#000; color:#fff; }
-.store-badges .btn[aria-disabled="true"] { opacity:0.78; cursor:default; }
+.store-badge { display:inline-flex; align-items:center; justify-content:center; filter:grayscale(15%) brightness(1.05); transition:.25s; border-radius:12px; }
+.store-badge[aria-disabled="true"] { cursor:default; }
+.store-badge img { display:block; height:auto; width:170px; max-width:42vw; }
+.store-badge:hover img, .store-badge:focus img { filter:grayscale(0%) brightness(1.08); }
+.store-badge:focus { outline:2px solid var(--c-primary); outline-offset:4px; }
 
 .btn { --btn-bg:#fff; --btn-color:var(--c-primary); background:var(--btn-bg); color:var(--btn-color); text-decoration:none; padding:0.85rem 1.35rem; font-weight:600; font-size:0.98rem; border-radius:var(--radius-s); box-shadow:var(--shadow-s); border:2px solid transparent; transition:.2s; display:inline-flex; align-items:center; gap:0.45rem; }
 .btn.primary { --btn-bg:var(--c-primary); --btn-color:#fff; }

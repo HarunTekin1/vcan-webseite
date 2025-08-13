@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="153" viewBox="0 0 512 153" role="img" aria-label="App Store – bald verfügbar">
+  <rect width="512" height="153" rx="18" fill="#000"/>
+  <text x="150" y="64" font-family="Inter,Arial,sans-serif" font-size="30" fill="#fff" font-weight="600">App Store</text>
+  <text x="150" y="108" font-family="Inter,Arial,sans-serif" font-size="24" fill="#bdbdbd">bald</text>
+  <circle cx="78" cy="76" r="42" fill="#111" stroke="#2c2c2c" stroke-width="2"/>
+  <path d="M70 45c5 0 9 4 9 9 0 2-1 4-2 6l-26 45c-1 1-2 2-4 2-4 0-6-5-4-8l23-40c-3-1-6-5-6-9 0-6 5-11 10-11zM98 53c4 0 7 3 7 7 0 1 0 2-1 3l-26 45c-1 2-3 3-5 3-4 0-7-5-5-8l26-46c-3-1-5-4-5-7 0-5 4-9 9-9z" fill="#fff"/>
+</svg>
