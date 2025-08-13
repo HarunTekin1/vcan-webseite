@@ -18,6 +18,7 @@
     .consent{display:flex;align-items:flex-start;gap:.6rem;font-size:.95rem}
     .consent input{margin-top:.2rem}
     .status-msg{font-size:.85rem;margin-top:.25rem;min-height:1.1rem}
+    .consent-note{font-size:.78rem;opacity:.85;margin-top:.15rem}
   </style>
   <script>
     document.addEventListener('DOMContentLoaded',()=>{
@@ -25,15 +26,51 @@
       const submit = document.getElementById('regSubmit');
       const consent = document.getElementById('consent');
       const status = document.getElementById('regStatus');
+      const getEndpoint = () => form.getAttribute('data-endpoint') || (window.VCAN_CONFIG && window.VCAN_CONFIG.registerEndpoint) || '';
+      async function postJSON(url, data){
+        const ctrl = new AbortController();
+        const t = setTimeout(()=>ctrl.abort(), 12000);
+        try{
+          const res = await fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data), signal:ctrl.signal});
+          clearTimeout(t);
+          if(!res.ok) throw new Error('Fehler '+res.status);
+          return await res.json().catch(()=>({ok:true}));
+        }catch(err){
+          clearTimeout(t);
+          throw err;
+        }
+      }
       function sync(){ submit.disabled = !form.checkValidity() || !consent.checked; }
       ['input','change'].forEach(ev=> form.addEventListener(ev, sync));
       sync();
       form.addEventListener('submit', e => {
         e.preventDefault();
         if(!consent.checked){ status.textContent='Bitte AGB & Datenschutz bestätigen.'; return; }
-        status.textContent='Registrierung gesendet (Demo, kein echter Versand).';
-        form.reset();
-        sync();
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          password: form.password.value,
+          consent: true,
+          ts: new Date().toISOString()
+        };
+        const endpoint = getEndpoint();
+        if(!endpoint){
+          status.textContent = 'Demo: Endpoint noch nicht konfiguriert. Daten wurden nicht übertragen.';
+          form.reset();
+          sync();
+          return;
+        }
+        submit.disabled = true;
+        status.textContent = 'Bitte warten…';
+        postJSON(endpoint, payload).then(()=>{
+          status.textContent = 'Erfolgreich registriert. Bitte E‑Mail prüfen (falls aktiviert).';
+          form.reset();
+          sync();
+        }).catch(err=>{
+          status.textContent = 'Fehler bei der Registrierung: '+ (err && err.message ? err.message : 'Unbekannter Fehler');
+        }).finally(()=>{
+          submit.disabled = false;
+        });
       });
     });
   </script>
@@ -78,6 +115,7 @@
           </div>
           <button id="regSubmit" class="btn primary" type="submit" disabled>Registrieren</button>
           <div id="regStatus" class="status-msg" aria-live="polite"></div>
+          <p class="consent-note">Hinweis: Mit der Registrierung stimmst du unseren <a href="agb.html">AGB</a> und der <a href="datenschutz.html">Datenschutzerklärung</a> zu. Ein Widerruf ist jederzeit mit Wirkung für die Zukunft möglich.</p>
         </form>
       </div>
     </section>
