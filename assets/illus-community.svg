@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Gezeichnete Menschen stehen im Kreis – Gemeinschaft & Verbundenheit"><defs>
+	<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8f9fb"/><stop offset="100%" stop-color="#f4ffff"/></linearGradient>
+	<linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0097a7"/><stop offset="100%" stop-color="#00bfae"/></linearGradient>
+	<linearGradient id="skin1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffcc99"/><stop offset="100%" stop-color="#f2a266"/></linearGradient>
+	<linearGradient id="skin2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffd7b3"/><stop offset="100%" stop-color="#e5a87a"/></linearGradient>
+	<linearGradient id="skin3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#d9a679"/><stop offset="100%" stop-color="#b37b48"/></linearGradient>
+	<linearGradient id="shirt1" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#0097a7"/><stop offset="100%" stop-color="#26c6da"/></linearGradient>
+	<linearGradient id="shirt2" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#006978"/><stop offset="100%" stop-color="#00bfae"/></linearGradient>
+	<linearGradient id="shirt3" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#007a8b"/><stop offset="100%" stop-color="#4dd0e1"/></linearGradient>
+	<filter id="s" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0097a7" flood-opacity="0.12"/></filter>
+</defs>
+<rect width="800" height="450" rx="28" fill="url(#bg)"/>
+<circle cx="400" cy="225" r="170" fill="none" stroke="url(#ring)" stroke-width="10" stroke-dasharray="4 10" opacity="0.35"/>
+<circle cx="400" cy="225" r="120" fill="#0097a7" opacity="0.05"/>
+<!-- Personen (vereinfachte Figuren) -->
+<g stroke="#0b5c66" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#s)">
+	<!-- Oben -->
+	<g transform="translate(400 120)">
+		<circle r="22" fill="url(#skin1)"/>
+		<path d="M-32 54q32-18 64 0v40q-32 16-64 0z" fill="url(#shirt1)"/>
+		<path d="M-45 34l13 20M45 34l-13 20" fill="none"/>
+	</g>
+	<!-- Rechts -->
+	<g transform="translate(520 225)">
+		<circle r="22" fill="url(#skin2)"/>
+		<path d="M-32 54q32-18 64 0v40q-32 16-64 0z" fill="url(#shirt2)"/>
+		<path d="M-45 34l13 20M45 34l-13 20" fill="none"/>
+	</g>
+	<!-- Unten -->
+	<g transform="translate(400 330)">
+		<circle r="22" fill="url(#skin3)"/>
+		<path d="M-32 54q32-18 64 0v40q-32 16-64 0z" fill="url(#shirt3)"/>
+		<path d="M-45 34l13 20M45 34l-13 20" fill="none"/>
+	</g>
+	<!-- Links -->
+	<g transform="translate(280 225)">
+		<circle r="22" fill="url(#skin2)"/>
+		<path d="M-32 54q32-18 64 0v40q-32 16-64 0z" fill="url(#shirt1)"/>
+		<path d="M-45 34l13 20M45 34l-13 20" fill="none"/>
+	</g>
+	<!-- Zwischenfiguren -->
+	<g transform="translate(470 160) scale(.85)">
+		<circle r="18" fill="url(#skin3)"/>
+		<path d="M-26 44q26-16 52 0v30q-26 14-52 0z" fill="url(#shirt3)"/>
+	</g>
+	<g transform="translate(330 160) scale(.85)">
+		<circle r="18" fill="url(#skin2)"/>
+		<path d="M-26 44q26-16 52 0v30q-26 14-52 0z" fill="url(#shirt2)"/>
+	</g>
+	<g transform="translate(470 290) scale(.85)">
+		<circle r="18" fill="url(#skin1)"/>
+		<path d="M-26 44q26-16 52 0v30q-26 14-52 0z" fill="url(#shirt1)"/>
+	</g>
+	<g transform="translate(330 290) scale(.85)">
+		<circle r="18" fill="url(#skin3)"/>
+		<path d="M-26 44q26-16 52 0v30q-26 14-52 0z" fill="url(#shirt2)"/>
+	</g>
+</g>
+<text x="400" y="225" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="600" fill="#007785">Vernetzt</text>
+<text x="400" y="258" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="14" fill="#0b5c66">Gemeinschaft schaffen</text>
+</svg>

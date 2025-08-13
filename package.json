@@ -1,0 +1,24 @@
+{
+  "name": "webseite",
+  "version": "1.0.0",
+  "description": "Startseite & Grundgerüst der VCan Web-Präsenz.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"No tests\"",
+    "optimize:images": "node scripts/optimize-images.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarunTekin1/vcan-webseite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarunTekin1/vcan-webseite/issues"
+  },
+  "homepage": "https://github.com/HarunTekin1/vcan-webseite#readme",
+  "devDependencies": {
+    "sharp": "^0.34.3"
+  }
+}

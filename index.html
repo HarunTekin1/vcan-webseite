@@ -26,9 +26,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="VCan" />
     <meta name="application-name" content="VCan" />
-    <link rel="preload" href="assets/41819f8e-51e3-4c75-915e-e11dbbeeb64f.jpg" as="image" fetchpriority="high" />
+    <!-- Preload neues Hero Bild (kleiner: 420px) -->
+    <!-- removed raster preload (now SVG illustration) -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTcviYw.woff2" as="font" type="font/woff2" crossorigin>
-    <meta name="color-scheme" content="light dark" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" hreflang="de" href="https://example.com/" />
+        <link rel="alternate" hreflang="en" href="https://example.com/en/" />
+        <!-- Critical CSS (Above-the-fold) -->
+        <style>
+            :root{--c-bg:#f5fbfc;--c-primary:#0097a7;--c-gradient:linear-gradient(135deg,#26c6da 0%,#0097a7 100%);--c-text:#183034;--c-text-soft:#326a70;--radius-s:6px;--shadow-s:0 2px 6px rgba(0,0,0,.05);--shadow-m:0 4px 18px rgba(0,0,0,.08);font-family:'Inter',system-ui,Arial,sans-serif}
+            body{margin:0;background:var(--c-bg);color:var(--c-text)}.site-header{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.4rem;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-bottom:1px solid #e1eff0}
+            .brand{display:flex;align-items:center;gap:.65rem}.logo img{width:40px;height:40px;border-radius:8px;display:block}
+            .hero{display:grid;gap:3rem;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center;padding:2rem 1rem 3.5rem;background:var(--c-gradient);color:#fff}
+            .hero-content h1{margin:0 0 1rem;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1}
+            .tagline{margin:0 0 1.2rem;font-size:clamp(1.05rem,1.7vw,1.25rem);font-weight:500;color:#e8feff}
+            .btn{--btn-bg:#fff;--btn-color:var(--c-primary);background:var(--btn-bg);color:var(--btn-color);text-decoration:none;padding:.85rem 1.35rem;font-weight:600;font-size:.95rem;border-radius:6px;box-shadow:var(--shadow-s);display:inline-flex;align-items:center;gap:.45rem;transition:.2s}
+            .btn.primary{--btn-bg:var(--c-primary);--btn-color:#fff}
+        </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VCan","url":"https://example.com/","description":"Soziale Plattform – Menschlichkeit vernetzt","logo":"https://example.com/assets/vcan-logo.jpg"}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +64,7 @@
             <ul id="nav-links" class="nav-links">
                 <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="vision.html" aria-current="false">Vision</a></li>
-                <li><a href="features.html" aria-current="false">Features</a></li>
+                <li><a href="partner.html" aria-current="false">Kooperationspartner werden</a></li>
                 <li><a href="kontakt.html" aria-current="false">Kontakt</a></li>
                 <li><a href="impressum.html" aria-current="false">Impressum</a></li>
                 <li><a href="admin.html" class="admin-link">Admin</a></li>
@@ -59,10 +73,14 @@
     </header>
     <main id="main" tabindex="-1">
         <section class="hero" aria-labelledby="hero-title">
-            <div class="hero-media">
-                <!-- Neues Hero Bild -->
-                <img src="assets/41819f8e-51e3-4c75-915e-e11dbbeeb64f.jpg" alt="Illustration: Unterstützung, Austausch und vertrauensvolle Verbindung" decoding="async" width="960" height="640" fetchpriority="high" />
-            </div>
+                        <div class="hero-media">
+                            <picture>
+                                <source type="image/avif" srcset="assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.avif 640w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.avif 960w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.avif 1280w" sizes="(max-width:1000px) 100vw, 960px">
+                                <source type="image/webp" srcset="assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.webp 640w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.webp 960w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.webp 1280w" sizes="(max-width:1000px) 100vw, 960px">
+                                <source type="image/jpeg" srcset="assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.jpg 640w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.jpg 960w, assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.jpg 1280w" sizes="(max-width:1000px) 100vw, 960px">
+                                <img src="assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.jpg" alt="Symbolfoto: Verbundene Menschen in Gemeinschaft" width="960" height="540" fetchpriority="high" decoding="async" style="width:100%;max-width:960px;height:auto;border-radius:12px;aspect-ratio:16/9;" />
+                            </picture>
+                        </div>
             <div class="hero-content">
                 <h1 id="hero-title">Menschlichkeit vernetzt</h1>
                 <p class="tagline">Sicher. Unterstützend. Barrierefrei.<br>Für alle Generationen.</p>
@@ -80,6 +98,9 @@
         </section>
         <section class="mission" aria-labelledby="mission-title">
             <h2 id="mission-title">Verbindungen, die Leben verändern – digital, sicher, menschlich.</h2>
+                        <figure class="section-illustration" style="margin:0 0 1.2rem;">
+                                                        <img src="assets/illus-dialog.svg" alt="Abstrakte Illustration: Dialog & Austausch" loading="lazy" decoding="async" width="320" height="180" style="width:100%;height:auto;border-radius:10px;" />
+                        </figure>
             <p>In einer Welt voller Trennungen, Ungleichheit und Unsicherheit bauen wir eine Plattform, die echte Verbindung ermöglicht – zwischen Menschen, die nicht mehr allein kämpfen wollen, und denen, die bereit sind, Hilfe zu geben.</p>
             <h3>Was wir tun</h3>
             <p>Unsere App bringt Menschen in herausfordernden Lebenslagen zusammen: nach einer Trennung, bei Wohnungssuche oder Studienbeginn, nach Flucht, im Krankheitsfall, bei Diskriminierung – oder in Zeiten, in denen einfach niemand da ist.</p>
@@ -101,6 +122,9 @@
         </section>
         <section class="values" aria-labelledby="values-title">
             <h2 id="values-title">Was uns leitet</h2>
+                        <figure class="section-illustration" style="margin:0 0 1.4rem;">
+                                                        <img src="assets/illus-hands.svg" alt="Abstrakte Illustration: Verbundene Hände / Solidarität" loading="lazy" decoding="async" width="320" height="180" style="width:100%;height:auto;border-radius:10px;" />
+                        </figure>
             <div class="value-grid">
                 <article class="value-item"><h3>Respekt</h3><p>Würde & Augenhöhe in jeder Begegnung.</p></article>
                 <article class="value-item"><h3>Solidarität</h3><p>Gemeinsam statt allein – lokal & global.</p></article>
@@ -110,6 +134,9 @@
         </section>
         <section class="feature-preview" aria-labelledby="features-title">
             <h2 id="features-title">Ein erster Blick</h2>
+                        <figure class="section-illustration" style="margin:0 0 1.2rem;">
+                                                        <img src="assets/illus-features.svg" alt="Abstrakte Illustration: Feature Übersicht" loading="lazy" decoding="async" width="320" height="180" style="width:100%;height:auto;border-radius:10px;" />
+                        </figure>
             <div class="cards">
                 <div class="card"><h3>Community</h3><p>Gruppen & Räume für Austausch und Stabilität.</p></div>
                 <div class="card"><h3>Verifizierung</h3><p>Sicherheit durch geprüfte Profile.</p></div>
@@ -129,6 +156,7 @@
             <nav aria-label="Footer Navigation">
                 <ul class="footer-links">
                     <li><a href="impressum.html">Impressum</a></li>
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
                     <li><a href="vision.html">Vision</a></li>
                 </ul>
@@ -137,6 +165,15 @@
         </div>
     </footer>
     <script src="app.js" defer></script>
+        <script defer>
+            // Blur -> sharp enhancement for images marked with data-blur (future use)
+            window.addEventListener('DOMContentLoaded',()=>{
+                document.querySelectorAll('img[data-blur]').forEach(img=>{
+                    if(img.complete){ img.classList.add('loaded'); }
+                    else { img.addEventListener('load',()=>img.classList.add('loaded'),{once:true}); }
+                });
+            });
+        </script>
     <noscript>Bitte JavaScript aktivieren, um alle Funktionen zu nutzen.</noscript>
 </body>
 </html>

@@ -39,7 +39,7 @@
       <ul id="nav-links" class="nav-links">
   <li><a href="index.html" aria-current="false">Home</a></li>
   <li><a href="vision.html" aria-current="false">Vision</a></li>
-  <li><a href="features.html" aria-current="false">Features</a></li>
+  <li><a href="partner.html" aria-current="false">Kooperationspartner werden</a></li>
   <li><a href="kontakt.html" class="active" aria-current="page">Kontakt</a></li>
   <li><a href="impressum.html" aria-current="false">Impressum</a></li>
         <li><a href="admin.html" class="admin-link">Admin</a></li>
@@ -49,9 +49,10 @@
   <main id="main" tabindex="-1">
     <section class="feature-preview" aria-labelledby="contact-title">
       <h1 id="contact-title">Kontakt</h1>
-      <p style="max-width:760px;margin:0 auto 1.4rem;">Fragen, Kooperation oder Feedback? Schreib uns eine Nachricht.</p>
+  <p style="max-width:760px;margin:0 auto 1.4rem;">Fragen, Kooperation oder Feedback? Schreib uns eine Nachricht. <span id="contactContext" style="font-weight:600;color:var(--c-primary);"></span></p>
       <div class="contact-wrap">
         <form id="contactForm" novalidate>
+          <input type="hidden" name="sourceRef" id="sourceRef" />
           <div>
             <label for="name">Name</label>
             <input id="name" name="name" required placeholder="Dein Name" />
@@ -86,6 +87,20 @@
       const form = document.getElementById('contactForm');
       const statusBox = document.getElementById('formStatus');
       const fields = ['name','email','message'];
+      const params = new URLSearchParams(location.search);
+      const ref = params.get('ref');
+      const refInput = document.getElementById('sourceRef');
+      const ctxSpan = document.getElementById('contactContext');
+      if(ref){
+        refInput.value = ref;
+        if(ref === 'partner'){
+          ctxSpan.textContent = '– Anfrage Kooperation';
+          const msg = document.getElementById('message');
+          if(msg && !msg.value){
+            msg.value = 'Kooperationsanfrage: Bitte senden Sie mir Informationen zu möglichen Partnerschaftsmodellen...';
+          }
+        }
+      }
       function showError(id,msg){
         const el = document.querySelector(`.status-msg[data-for="${id}"]`);
         if(el){ el.textContent = msg || ''; el.style.color = msg? '#d32f2f':'inherit'; }
@@ -102,7 +117,7 @@
         if(!message){ showError('message','Nachricht fehlt'); valid=false; }
         if(!valid){ statusBox.textContent = 'Bitte Fehler korrigieren.'; return; }
         statusBox.textContent = 'Sende (Demo) ...';
-        setTimeout(()=>{ statusBox.textContent = 'Nachricht gesendet (Demo, kein echter Versand).'; form.reset(); }, 900);
+  setTimeout(()=>{ statusBox.textContent = 'Nachricht gesendet (Demo, kein echter Versand).'; const keepRef = refInput.value; form.reset(); refInput.value = keepRef; }, 900);
       });
     })();
   </script>

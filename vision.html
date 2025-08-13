@@ -30,7 +30,7 @@
       <ul id="nav-links" class="nav-links">
   <li><a href="index.html" aria-current="false">Home</a></li>
   <li><a href="vision.html" class="active" aria-current="page">Vision</a></li>
-  <li><a href="features.html" aria-current="false">Features</a></li>
+  <li><a href="partner.html" aria-current="false">Kooperationspartner werden</a></li>
   <li><a href="kontakt.html" aria-current="false">Kontakt</a></li>
   <li><a href="impressum.html" aria-current="false">Impressum</a></li>
         <li><a href="admin.html" class="admin-link">Admin</a></li>
@@ -41,6 +41,11 @@
     <section class="feature-preview" aria-labelledby="vision-title">
       <h1 id="vision-title">Unsere Vision</h1>
       <p style="max-width:760px;margin:0 auto 1.4rem;">Menschlichkeit vernetzt. Wir schaffen einen digitalen Raum, der Sicherheit, Empathie und Selbstwirksamkeit vereint.</p>
+      <figure class="section-illustration" style="max-width:820px;margin:0 auto 1.6rem;">
+        <picture>
+          <img src="assets/illus-perspektive.svg" alt="Abstrakte Illustration: Perspektive & Neustart" loading="lazy" decoding="async" width="720" height="360" style="width:100%;height:auto;border-radius:12px;" />
+        </picture>
+      </figure>
       <div class="cards" style="margin-bottom:2rem;">
         <div class="card"><h3>Verbindung</h3><p>Menschen in herausfordernden Lebenssituationen zusammenbringen.</p></div>
         <div class="card"><h3>Schutz</h3><p>Moderation & Verifizierung für Vertrauen.</p></div>
@@ -48,6 +53,11 @@
         <div class="card"><h3>Solidarität</h3><p>Gemeinsam statt isoliert – lokal & global.</p></div>
       </div>
       <article style="max-width:820px;margin:0 auto;line-height:1.55;font-size:0.98rem;">
+        <figure class="section-illustration" style="margin:0 0 1.4rem;">
+          <picture>
+            <img src="assets/illus-empower.svg" alt="Abstrakte Illustration: Empowerment & Unterstützung" loading="lazy" decoding="async" width="720" height="360" style="width:100%;height:auto;border-radius:12px;" />
+          </picture>
+        </figure>
         <p>In einer Welt voller Umbrüche glauben wir an das Stärkste, was Menschen haben: einander. Unsere Plattform verbindet Menschen würdevoll, barrierefrei und frei von toxischer Aufmerksamkeits-Ökonomie.</p>
         <p>Wir kombinieren soziale Tiefe, praktische Hilfe und verlässliche Strukturen. Kein isoliertes Scrollen – sondern sinnvolle Begegnungen, Unterstützung, Perspektive.</p>
         <p><strong>Wir fördern keine Abhängigkeit</strong>, sondern Selbstwirksamkeit durch Verbindung & Wissen.</p>
@@ -70,5 +80,13 @@
     </div>
   </footer>
   <script src="app.js" defer></script>
+  <script defer>
+    window.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('img[data-blur]').forEach(img=>{
+        if(img.complete){ img.classList.add('loaded'); }
+        else { img.addEventListener('load',()=>img.classList.add('loaded'),{once:true}); }
+      });
+    });
+  </script>
 </body>
 </html>

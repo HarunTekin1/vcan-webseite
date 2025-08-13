@@ -43,6 +43,14 @@
 html,body { height:100%; }
 body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoothing:antialiased; }
 
+/* Responsive media helpers */
+.section-illustration { position:relative; overflow:hidden; }
+.section-illustration img { display:block; width:100%; height:auto; border-radius:12px; background:#e3f3f5; filter:contrast(1.03) saturate(1.04); }
+
+/* Blur-up placeholder pattern (when using data-placeholder attribute) */
+[data-blur] { filter:blur(18px) contrast(1.05); transform:scale(1.02); }
+[data-blur].loaded { filter:none; transform:none; transition:filter .5s ease, transform .5s ease; }
+
 /* Accessibility */
 .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
 .skip-link:focus { left:1rem; top:1rem; width:auto; height:auto; background:#000; color:#fff; padding:0.6rem 1rem; border-radius:var(--radius-s); z-index:10000; }
