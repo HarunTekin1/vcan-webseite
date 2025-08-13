@@ -1,17 +1,33 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v2';
+const CACHE_NAME = 'vcan-static-v22';
 const ASSETS = [
   'index.html','features.html','vision.html','kontakt.html','impressum.html','datenschutz.html','offline.html',
   'partner.html','en/index.html',
   'styles.css','app.js','manifest.json',
-  'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg'
+  'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg',
+  // New illustrations
+  'assets/illus-community.svg','assets/illus-dialog.svg','assets/illus-hands.svg','assets/illus-features.svg',
+  'assets/illus-perspektive.svg','assets/illus-empower.svg','assets/illus-scale.svg','assets/illus-team.svg',
+  // Hero photo variants
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.avif',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.avif',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.avif'
+  ,
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.webp',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.webp',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.webp',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.jpg',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.jpg',
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.jpg'
 ];
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)));
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())
+  );
 });
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k))))
+    caches.keys().then(keys => Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())
   );
 });
 self.addEventListener('fetch', e => {
