@@ -123,6 +123,7 @@
   <script>
     (function(){
       const ADMIN_HASH = '2342f81c80f1211258bdf17e18aad1062b131c5c3f2b6a075ced1826f55efa01';
+      const DEMO_PASSWORD = 'vcan-admin'; // Fallback für unsichere Kontexte
       const gate = document.getElementById('adminGate');
       const main = document.getElementById('main');
       const input = document.getElementById('adminPwd');
@@ -137,9 +138,12 @@
       function hideMain(){ main.hidden=true; }
 
       async function sha256Hex(str){
-        const enc = new TextEncoder().encode(str);
-        const buf = await crypto.subtle.digest('SHA-256', enc);
-        return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+        try{
+          if(!(window.crypto && window.crypto.subtle && window.TextEncoder)) return null;
+          const enc = new TextEncoder().encode(str);
+          const buf = await window.crypto.subtle.digest('SHA-256', enc);
+          return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+        }catch(_){ return null; }
       }
 
       async function tryLogin(){
@@ -148,8 +152,12 @@
         if(!pwd){ msg.textContent = 'Passwort fehlt.'; return; }
         try{
           const hash = await sha256Hex(pwd);
-          if(hash === ADMIN_HASH){
+          if(hash && hash === ADMIN_HASH){
             sessionStorage.setItem('adminAuth', hash);
+            hideGate(); showMain(); input.value=''; msg.textContent='';
+          } else if(!hash && pwd === DEMO_PASSWORD){
+            // Fallback in unsicheren Kontexten (z. B. file://, http): akzeptiere Demo-Passwort
+            sessionStorage.setItem('adminAuth', 'ok');
             hideGate(); showMain(); input.value=''; msg.textContent='';
           } else {
             msg.textContent = 'Falsches Passwort.';
@@ -159,7 +167,8 @@
 
       function logout(){ sessionStorage.removeItem('adminAuth'); hideMain(); showGate(); }
 
-      if(sessionStorage.getItem('adminAuth') === ADMIN_HASH){ hideGate(); showMain(); } else { showGate(); hideMain(); }
+  const token = sessionStorage.getItem('adminAuth');
+  if(token === ADMIN_HASH || token === 'ok'){ hideGate(); showMain(); } else { showGate(); hideMain(); }
 
       loginBtn?.addEventListener('click', tryLogin);
       input?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ tryLogin(); }});
