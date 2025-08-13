@@ -1,7 +1,7 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v41';
+const CACHE_NAME = 'vcan-static-v42';
 const ASSETS = [
-  'index.html','features.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html',
+  'index.html','features.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','register.html',
   'partner.html','en/index.html',
   'styles.css','app.js','manifest.json',
   'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg',
