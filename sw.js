@@ -2,6 +2,7 @@
 const CACHE_NAME = 'vcan-static-v2';
 const ASSETS = [
   'index.html','features.html','vision.html','kontakt.html','impressum.html','offline.html',
+  'partner.html',
   'styles.css','app.js','manifest.json',
   'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg'
 ];
