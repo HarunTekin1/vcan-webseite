@@ -1,5 +1,5 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v125';
+const CACHE_NAME = 'vcan-static-v126';
 const ASSETS = [
   'index.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','fuer-user.html',
   'partner.html','en/index.html',
@@ -19,8 +19,8 @@ const ASSETS = [
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.jpg',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.jpg',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.jpg',
-  // Vision hero image
-  'assets/images.png'
+  // Vision hero image (user-provided)
+  'assets/vision-hero-user/images.png'
 ];
 self.addEventListener('install', e => {
   e.waitUntil(
