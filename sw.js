@@ -1,7 +1,7 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v43';
+const CACHE_NAME = 'vcan-static-v96';
 const ASSETS = [
-  'index.html','features.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','register.html',
+  'index.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','fuer-user.html',
   'partner.html','en/index.html',
   'styles.css','app.js','manifest.json',
   'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg',
@@ -33,6 +33,18 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if(req.method !== 'GET') return;
+  try {
+    const url = new URL(req.url);
+    // Redirect legacy paths
+    if (url.pathname.endsWith('/register.html') || url.pathname.endsWith('/register')) {
+      e.respondWith(Response.redirect(`${url.origin}/fuer-user.html`, 302));
+      return;
+    }
+    if (url.pathname.endsWith('/features.html') || url.pathname.endsWith('/features')) {
+      e.respondWith(Response.redirect(`${url.origin}/admin.html#features-admin`, 302));
+      return;
+    }
+  } catch (_) {}
   if(req.mode === 'navigate') {
     e.respondWith(fetch(req).catch(() => caches.match('offline.html')));
     return;
