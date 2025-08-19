@@ -65,3 +65,30 @@
     });
   }
 })();
+
+// Expose admin mode to UI (show admin-only links when session present)
+(function(){
+  try{
+    const token = sessionStorage.getItem('adminAuth');
+    if(token){ document.body.classList.add('is-admin'); }
+    // keep in sync on storage events within same tab
+    window.addEventListener('storage', () => {
+      const t = sessionStorage.getItem('adminAuth');
+      document.body.classList.toggle('is-admin', !!t);
+    });
+  }catch(_){ /* ignore */ }
+})();
+
+// Compute and set header height CSS var for full-viewport hero
+(function(){
+  function setHeaderH(){
+    const header = document.querySelector('.site-header');
+    if(!header) return;
+    const h = header.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--header-h', `${Math.round(h)}px`);
+  }
+  window.addEventListener('load', setHeaderH);
+  window.addEventListener('resize', setHeaderH);
+  // also update on font load/layout shifts
+  document.addEventListener('DOMContentLoaded', setHeaderH);
+})();
