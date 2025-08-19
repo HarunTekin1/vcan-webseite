@@ -13,44 +13,40 @@
   <meta property="og:url" content="https://example.com/kontakt.html" />
   <meta property="og:image" content="assets/hero-placeholder.jpg" />
   <meta property="og:locale" content="de_DE" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VCan – Kontakt" />
-  <meta name="twitter:description" content="Nimm Kontakt mit der VCan Initiative auf." />
-  <meta name="twitter:image" content="assets/hero-placeholder.jpg" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    .contact-wrap { max-width:760px; margin:0 auto; background:var(--c-surface); padding:2rem 1.5rem 2.4rem; border-radius:var(--radius-l); box-shadow:var(--shadow-m); }
+    .contact-wrap { max-width:760px; margin:0 auto; background:var(--c-surface,#fff); padding:2rem 1.5rem 2.4rem; border-radius:var(--radius-l,12px); box-shadow:var(--shadow-m,0 8px 30px rgba(0,0,0,.08)); }
     form { display:grid; gap:1rem; }
-    label { font-weight:600; font-size:0.9rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--c-text-soft); }
-    input, textarea { width:100%; padding:0.85rem 0.9rem; border:1px solid #c9e3e6; border-radius:var(--radius-s); font:inherit; background:#f7fcfd; }
-    input:focus, textarea:focus { outline:none; border-color:var(--c-primary); box-shadow:var(--shadow-glow); }
+    label { font-weight:600; font-size:0.9rem; letter-spacing:0.5px; text-transform:uppercase; color:var(--c-text-soft,#326a70); }
+    input, textarea { width:100%; padding:0.85rem 0.9rem; border:1px solid #c9e3e6; border-radius:var(--radius-s,8px); font:inherit; background:#f7fcfd; }
+    input:focus, textarea:focus { outline:none; border-color:var(--c-primary,#0097a7); box-shadow:var(--shadow-glow,0 0 0 3px rgba(0,151,167,.18)); }
     textarea { min-height:140px; resize:vertical; }
-    .status-msg { font-size:0.85rem; margin-top:0.25rem; }
+    .status-msg { font-size:0.85rem; margin-top:0.25rem; min-height:1.1rem; }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
-  <header class="site-header">
-  <div class="brand"><a href="index.html" class="logo" aria-label="VCan Startseite"><img src="assets/vcan-logo.jpg" alt="VCan Logo" width="40" height="40" loading="lazy" decoding="async" /></a><span class="app-name">VCan</span><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button></div>
-  <nav class="main-nav" id="primaryNav" aria-label="Hauptnavigation">
+  <header class="site-header" role="banner">
+    <div class="brand"><a href="index.html" class="logo" aria-label="VCan Startseite"><img src="assets/vcan-logo.jpg" alt="VCan Logo" width="40" height="40" loading="lazy" decoding="async" /></a><span class="app-name">VCan</span><button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button></div>
+    <nav class="main-nav" id="primaryNav" aria-label="Hauptnavigation">
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" id="navToggle">Menü</button>
       <ul id="nav-links" class="nav-links">
-  <li><a href="index.html" aria-current="false">Home</a></li>
-  <li><a href="vision.html" aria-current="false">Unsere Vision</a></li>
-  <li><a href="partner.html" aria-current="false">Kooperationspartner werden</a></li>
-  <li><a href="kontakt.html" class="active" aria-current="page">Kontakt</a></li>
-  <li><a href="impressum.html" aria-current="false">Impressum</a></li>
-  <li><a href="register.html" aria-current="false">Registrierung</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="vision.html">Unsere Vision</a></li>
+        <li><a href="partner.html">Kooperationspartner werden</a></li>
+        <li><a href="kontakt.html" class="active" aria-current="page">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
         <li><a href="admin.html" class="admin-link">Admin</a></li>
       </ul>
     </nav>
   </header>
+
   <main id="main" tabindex="-1">
     <section class="feature-preview" aria-labelledby="contact-title">
-      <h1 id="contact-title">Kontakt</h1>
-  <p style="max-width:760px;margin:0 auto 1.4rem;">Fragen, Kooperation oder Feedback? Schreib uns eine Nachricht. <span id="contactContext" style="font-weight:600;color:var(--c-primary);"></span></p>
+      <h1 id="contact-title" style="text-align:center;">Kontakt</h1>
+      <p style="max-width:760px;margin:0 auto 1.4rem;text-align:center;">Fragen, Kooperation oder Feedback? Schreib uns eine Nachricht. <span id="contactContext" style="font-weight:600;color:var(--c-primary);"></span></p>
       <div class="contact-wrap">
         <form id="contactForm" novalidate>
           <input type="hidden" name="sourceRef" id="sourceRef" />
@@ -70,35 +66,25 @@
             <div class="status-msg" data-for="message"></div>
           </div>
           <button class="btn primary" type="submit">Senden</button>
-          <div id="formStatus" aria-live="polite" style="margin-top:0.5rem;font-size:0.85rem;"></div>
+          <div id="formStatus" aria-live="polite" style="margin-top:0.5rem;font-size:0.9rem;"></div>
         </form>
       </div>
     </section>
   </main>
+
   <footer class="site-footer" aria-label="Footer">
     <div class="footer-cols">
       <div><strong>VCan</strong><br/>Menschlichkeit vernetzt.</div>
-  <nav aria-label="Footer Navigation"><ul class="footer-links"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="kontakt.html" aria-current="page">Kontakt</a></li><li><a href="vision.html">Vision</a></li></ul></nav>
+      <nav aria-label="Footer Navigation"><ul class="footer-links"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="kontakt.html" aria-current="page">Kontakt</a></li><li><a href="vision.html">Unsere Vision</a></li></ul></nav>
       <div class="legal">&copy; 2025 VCan. Alle Rechte vorbehalten.</div>
-      <div class="legal" style="text-align:center; opacity:0.95; font-size:0.9rem; margin-top:0.4rem;">
-        <a href="#" rel="noopener nofollow" style="color:inherit; text-decoration:none; display:inline-block;">
-          <span style="display:inline-block; font-weight:800; font-size:1.06rem; letter-spacing:0.6px; line-height:1; vertical-align:top;">H.I.T.</span>
-          <span style="display:inline-block; margin-left:1px; vertical-align:top; line-height:1;">
-            <span style="display:block; font-weight:600; font-size:0.6rem; opacity:0.95;">premium</span>
-            <span style="display:block; font-weight:600; font-size:0.6rem; opacity:0.95;">performance</span>
-          </span>
-        </a>
-        <span style="opacity:0.7; padding:0 0.5rem;">|</span>
-        <a href="impressum.html" style="color:inherit; text-decoration:underline;">Impressum</a>
-        <span style="opacity:0.7; padding:0 0.5rem;">|</span>
-        <a href="agb.html" style="color:inherit; text-decoration:underline;">AGB</a>
-      </div>
     </div>
   </footer>
+
   <script src="app.js" defer></script>
   <script>
     (function(){
       const form = document.getElementById('contactForm');
+      if(!form) return;
       const statusBox = document.getElementById('formStatus');
       const fields = ['name','email','message'];
       const params = new URLSearchParams(location.search);
@@ -106,13 +92,12 @@
       const refInput = document.getElementById('sourceRef');
       const ctxSpan = document.getElementById('contactContext');
       if(ref){
-        refInput.value = ref;
-        if(ref === 'partner'){
-          ctxSpan.textContent = '– Anfrage Kooperation';
-          const msg = document.getElementById('message');
-          if(msg && !msg.value){
-            msg.value = 'Kooperationsanfrage: Bitte senden Sie mir Informationen zu möglichen Partnerschaftsmodellen...';
-          }
+        if(refInput) refInput.value = ref;
+        if(ctxSpan){ ctxSpan.textContent = ref === 'partner' ? '– Anfrage Kooperation' : (ref === 'user' ? '– Nutzer-Anfrage' : `– ${ref}`); }
+        const msg = document.getElementById('message');
+        if(msg && !msg.value){
+          if(ref === 'partner') msg.value = 'Kooperationsanfrage: Bitte senden Sie mir Informationen zu möglichen Partnerschaftsmodellen...';
+          if(ref === 'user') msg.value = 'Nutzeranfrage: Ich möchte mehr über die Nutzung und erste Schritte erfahren...';
         }
       }
       function showError(id,msg){
@@ -121,17 +106,19 @@
       }
       form.addEventListener('submit', e => {
         e.preventDefault();
-        let valid = true;
         fields.forEach(f=>{ showError(f,''); });
         const name = form.name.value.trim();
         const email = form.email.value.trim();
         const message = form.message.value.trim();
-        if(!name){ showError('name','Name fehlt'); valid=false; }
-        if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ showError('email','Gültige E-Mail nötig'); valid=false; }
-        if(!message){ showError('message','Nachricht fehlt'); valid=false; }
-        if(!valid){ statusBox.textContent = 'Bitte Fehler korrigieren.'; return; }
-        statusBox.textContent = 'Sende (Demo) ...';
-  setTimeout(()=>{ statusBox.textContent = 'Nachricht gesendet (Demo, kein echter Versand).'; const keepRef = refInput.value; form.reset(); refInput.value = keepRef; }, 900);
+        let hasError = false;
+        if(!name){ showError('name','Bitte Namen angeben.'); hasError = true; }
+        if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ showError('email','Gültige E‑Mail angeben.'); hasError = true; }
+        if(!message){ showError('message','Bitte eine Nachricht schreiben.'); hasError = true; }
+        if(hasError){ statusBox.textContent = 'Bitte korrigiere die markierten Felder.'; return; }
+        statusBox.textContent = 'Gesendet! (Demo)';
+        const keepRef = refInput ? refInput.value : '';
+        form.reset();
+        if(refInput) refInput.value = keepRef;
       });
     })();
   </script>

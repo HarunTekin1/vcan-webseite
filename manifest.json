@@ -9,7 +9,6 @@
   "theme_color": "#0097a7",
   "orientation": "portrait-primary",
   "shortcuts": [
-    {"name": "Features","url": "features.html","icons":[{"src":"assets/icon-192.png","sizes":"192x192"}]},
     {"name": "Vision","url": "vision.html","icons":[{"src":"assets/icon-192.png","sizes":"192x192"}]}
   ],
   "icons": [

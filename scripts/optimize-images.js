@@ -1,4 +1,4 @@
-// Simple image optimization script using sharp
+bin da // Simple image optimization script using sharp
 // Generates multiple responsive sizes + webp versions
 // Usage: npx node scripts/optimize-images.js
 
