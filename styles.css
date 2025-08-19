@@ -106,7 +106,7 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 @media (min-width:1024px) and (max-width:1440px){
   .hero { grid-template-columns: 1fr 1fr; padding: 3rem 2.6rem; gap: 2.6rem; }
   .hero.full { padding-top: 2.6rem; padding-bottom: 2.6rem; }
-  .hero .hero-illustration-card { max-width: 600px; justify-self: start; }
+  .hero .hero-illustration-card { max-width: 720px; justify-self: start; }
   .hero .hero-content { max-width: 600px; }
   .cta-row .btn { padding: 0.75rem 1.1rem; font-size: 0.92rem; }
 }
