@@ -34,6 +34,13 @@
     .chip-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .7rem;border-radius:999px;border:1px solid #c9e3e6;background:#f7fcfd;color:inherit;text-decoration:none;font-weight:600;font-size:.85rem}
     .admin-activities{background:var(--c-surface,#fff);border:1px solid #ddf0f2;border-radius:10px;padding:1rem}
     .admin-activities ul{margin:.6rem 0 0;padding-left:1.1rem}
+  /* Features block (moved from public features.html) */
+  .feature-grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .feature-grid .card small{display:block;margin-top:.4rem;font-size:.65rem;letter-spacing:1px;font-weight:600;text-transform:uppercase;color:var(--c-text-soft,#326a70)}
+  .stage-plan{margin-top:2.2rem;background:var(--c-surface,#fff);padding:1.6rem 1.4rem 1.9rem;border-radius:var(--radius-l,14px);box-shadow:var(--shadow-m,0 4px 18px rgba(0,0,0,.08))}
+  .stage-plan h2{margin-top:0;font-size:1.2rem}
+  .stage-list{list-style:none;padding:0;margin:0;display:grid;gap:.8rem}
+  .stage-item{background:#f0fafb;padding:.85rem .9rem;border-radius:var(--radius-s,6px);border:1px solid #ddf0f2}
   </style>
 </head>
 <body>
@@ -52,7 +59,6 @@
   <li><a href="partner.html">Kooperationspartner werden</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="impressum.html">Impressum</a></li>
-  <li><a href="register.html">Registrierung</a></li>
         <li><a href="admin.html" class="active" aria-current="page">Admin</a></li>
       </ul>
     </nav>
@@ -101,6 +107,29 @@
         <li>11:20 – Rollen & Rechte überprüft</li>
       </ul>
     </div>
+
+    <section id="features-admin" class="feature-preview" aria-labelledby="features-admin-title" style="margin-top:2rem;">
+      <h2 id="features-admin-title">Features – Überblick</h2>
+      <p style="max-width:760px;margin:0 auto 1.4rem;">Geplante Funktionsbereiche. Reihenfolge & Inhalte können sich im iterativen Aufbau ändern.</p>
+      <div class="feature-grid">
+        <div class="card"><h3>Profile</h3><p>Individuelle Profile mit optionaler Verifizierung.</p><small>Stufe 1</small></div>
+        <div class="card"><h3>Gruppenräume</h3><p>Themenbasierte & moderierte Räume für Austausch.</p><small>Stufe 1</small></div>
+        <div class="card"><h3>Direktnachrichten</h3><p>Privater, sicherer Dialog.</p><small>Stufe 2</small></div>
+        <div class="card"><h3>Matching</h3><p>Situations- & Interessenbasierte Kontaktvorschläge.</p><small>Stufe 2</small></div>
+        <div class="card"><h3>Hilfsangebot / Gesuche</h3><p>Lokale Unterstützung finden & anbieten.</p><small>Stufe 2</small></div>
+        <div class="card"><h3>Veranstaltungen</h3><p>Community-Events & Termine entdecken.</p><small>Stufe 3</small></div>
+        <div class="card"><h3>Ressourcen-Bibliothek</h3><p>Kuratierte Inhalte & Tools.</p><small>Stufe 3</small></div>
+        <div class="card"><h3>Moderations-Panel</h3><p>Transparente, faire Community-Regeln durchsetzen.</p><small>Stufe 3</small></div>
+      </div>
+      <div class="stage-plan" aria-labelledby="rollout-admin-title">
+        <h2 id="rollout-admin-title">Geplanter Rollout (grober Fahrplan)</h2>
+        <ol class="stage-list">
+          <li class="stage-item"><strong>Stufe 1:</strong> Grundstruktur, Profile, Gruppen, Basissicherheit.</li>
+          <li class="stage-item"><strong>Stufe 2:</strong> Matching, Direktnachrichten, Hilfsangebote.</li>
+          <li class="stage-item"><strong>Stufe 3:</strong> Events, Ressourcen, erweitertes Moderations-Panel.</li>
+        </ol>
+      </div>
+    </section>
   </main>
   <footer class="site-footer" aria-label="Footer">
     <div class="footer-cols">
@@ -132,7 +161,7 @@
       const input = document.getElementById('adminPwd');
       const loginBtn = document.getElementById('adminLogin');
       const cancelBtn = document.getElementById('adminCancel');
-      const msg = document.getElementById('adminGateMsg');
+  const msg = document.getElementById('adminGateMsg');
       const logoutBtn = document.getElementById('adminLogout');
 
   function showGate(){ gate.hidden=false; gate.style.display='grid'; gate.setAttribute('aria-hidden','false'); }
@@ -150,7 +179,7 @@
         }catch(_){ return null; }
       }
 
-      async function tryLogin(){
+  async function tryLogin(){
         msg.textContent = '';
         const pwd = (input.value||'').trim();
         if(!pwd){ msg.textContent = 'Passwort fehlt.'; return; }
@@ -170,13 +199,24 @@
       }
 
       function logout(){ sessionStorage.removeItem('adminAuth'); hideMain(); showGate(); }
+      function onCancel(){
+        // Clear state and close overlay
+        try{ clearAuth(); }catch(_){ }
+        input.value=''; msg.textContent='';
+        hideMain(); hideGate();
+        // Navigate back if possible, else go to Home
+        try{
+          if(window.history && history.length > 1){ history.back(); }
+          else { window.location.href = 'index.html'; }
+        }catch(_){ window.location.href = 'index.html'; }
+      }
 
   const token = sessionStorage.getItem('adminAuth');
   if(token === ADMIN_HASH || token === 'ok'){ hideGate(); showMain(); } else { showGate(); hideMain(); }
 
-      loginBtn?.addEventListener('click', tryLogin);
-      input?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ tryLogin(); }});
-      cancelBtn?.addEventListener('click', ()=>{ input.value=''; msg.textContent=''; input.focus(); });
+  loginBtn?.addEventListener('click', tryLogin);
+  input?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ tryLogin(); } else if(e.key==='Escape'){ onCancel(); }});
+  cancelBtn?.addEventListener('click', onCancel);
       logoutBtn?.addEventListener('click', logout);
 
       // Auto-Logout beim Verlassen der Seite (auch bei BFCache-Rückkehr)
