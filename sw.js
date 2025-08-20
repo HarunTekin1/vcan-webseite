@@ -1,5 +1,5 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v135';
+const CACHE_NAME = 'vcan-static-v136';
 const ASSETS = [
   'index.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','fuer-user.html',
   'partner.html','en/index.html',
@@ -9,6 +9,7 @@ const ASSETS = [
   'assets/hero-1.jpg?v=134',
   'assets/hero%202.jpg?v=135',
   'assets/hero-2.jpg?v=136',
+  'assets/hero-2-generated.svg?v=1',
   // New illustrations
   'assets/illus-community.svg','assets/illus-dialog.svg','assets/illus-hands.svg','assets/illus-features.svg',
   'assets/illus-empower.svg','assets/illus-scale.svg','assets/illus-team.svg','assets/illus-people-friendly.svg',
