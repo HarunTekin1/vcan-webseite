@@ -147,5 +147,30 @@
       }catch(e){}
     })();
   </script>
+  <!-- Debug: force-fetch fresh hero image and replace the displayed image (bypasses caches) -->
+  <script>
+    (function(){
+      try{
+        var hero = document.querySelector('.hero-media img');
+        if(!hero) return;
+        var dbg = function(text){
+          var el = document.getElementById('vcan-debug-overlay');
+          if(!el){ el = document.createElement('div'); el.id='vcan-debug-overlay'; el.style.position='fixed'; el.style.right='12px'; el.style.bottom='12px'; el.style.padding='8px 10px'; el.style.background='rgba(0,0,0,0.7)'; el.style.color='#fff'; el.style.fontSize='13px'; el.style.borderRadius='6px'; el.style.zIndex=99999; document.body.appendChild(el); }
+          el.textContent = text;
+        };
+        (async function(){
+          try{
+            var url = 'assets/hero-1.jpg?dbg=' + Date.now();
+            var res = await fetch(url, {cache: 'no-store', credentials: 'same-origin'});
+            if(!res.ok){ dbg('Fetch failed: ' + res.status); return; }
+            var blob = await res.blob();
+            var obj = URL.createObjectURL(blob);
+            hero.src = obj;
+            dbg('Fresh image fetched: ' + res.url + ' (status ' + res.status + ')');
+          }catch(e){ dbg('Debug fetch error'); console.warn(e); }
+        })();
+      }catch(e){}
+    })();
+  </script>
 </body>
 </html>
