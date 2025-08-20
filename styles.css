@@ -102,6 +102,11 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 .hero-illustration-card { background:var(--c-surface); border-radius:var(--radius-l); box-shadow:var(--shadow-m); padding:0.9rem; }
 .hero-illustration-card img { display:block; width:100%; height:auto; border-radius:12px; }
 
+/* Hero photo frame: neutral background + soft shadow, keeps original image proportions */
+.hero-photo-frame { background:linear-gradient(180deg,#ffffff 0%,#fafcfe 100%); border:1px solid #e6eef1; border-radius:var(--radius-l); box-shadow:var(--shadow-m); padding:12px; }
+:root.dark .hero-photo-frame { background:#173236; border-color:#2b5c62; box-shadow:var(--shadow-m); }
+.hero-photo-frame img { width:auto; max-width:100%; height:auto; display:block; margin:0 auto; border-radius:0; }
+
 /* Laptop-Viewport Optimierungen */
 @media (min-width:1024px) and (max-width:1440px){
   .hero { grid-template-columns: 1fr 1fr; padding: 3rem 2.6rem; gap: 2.6rem; }
