@@ -112,6 +112,12 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 :root.dark .hero-cover { background:#12353a; }
 .hero-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border-radius:0 !important; }
 
+/* Subtle sharpness/clarity boost for photos */
+.img-sharp-lite { filter: contrast(1.04) saturate(1.06) url(#sharp-lite); will-change: filter; }
+@media (prefers-contrast: more){
+  .img-sharp-lite { filter: contrast(1.06) saturate(1.08) url(#sharp-lite); }
+}
+
 @media (min-width:1441px){
   .hero .hero-cover { max-width: 380px; }
 }

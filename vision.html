@@ -20,6 +20,14 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Hidden SVG filters for subtle image sharpening -->
+  <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px;">
+    <defs>
+      <filter id="sharp-lite">
+        <feConvolveMatrix order="3" kernelMatrix="0 -1 0 -1 5 -1 0 -1 0" divisor="1" preserveAlpha="true"/>
+      </filter>
+    </defs>
+  </svg>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -45,7 +53,7 @@
         <p style="max-width:60ch;margin:0;opacity:.95">Gemeinschaft statt Einsamkeit. Erfahrung statt nur Algorithmen. Mitgefühl statt Ausgrenzung.</p>
       </div>
   <div class="hero-media hero-cover">
-  <img src="assets/vision-hero-user/images.png?v=128" alt="Menschen in Alltagsszenen – Illustration" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/illus-people-friendly.svg?v=128';" />
+  <img class="img-sharp-lite" src="assets/vision-hero-user/images.png?v=129" alt="Menschen in Alltagsszenen – Illustration" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/illus-people-friendly.svg?v=129';" />
       </div>
     </section>
     <section class="feature-preview" aria-labelledby="vision-title">
