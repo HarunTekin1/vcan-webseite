@@ -107,6 +107,11 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 :root.dark .hero-photo-frame { background:#173236; border-color:#2b5c62; box-shadow:var(--shadow-m); }
 .hero-photo-frame img { width:auto; max-width:100%; height:auto; display:block; margin:0 auto; border-radius:0; }
 
+/* Hero cover: fills container with aspect ratio and soft corners */
+.hero-cover { position:relative; border-radius:var(--radius-l); overflow:hidden; box-shadow:var(--shadow-m); aspect-ratio:16 / 9; background:#eaf5f7; }
+:root.dark .hero-cover { background:#12353a; }
+.hero-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border-radius:0 !important; }
+
 /* Laptop-Viewport Optimierungen */
 @media (min-width:1024px) and (max-width:1440px){
   .hero { grid-template-columns: 1fr 1fr; padding: 3rem 2.6rem; gap: 2.6rem; }
