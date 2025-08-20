@@ -113,7 +113,7 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 .hero-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border-radius:0 !important; }
 
 @media (min-width:1441px){
-  .hero .hero-cover { max-width: 760px; }
+  .hero .hero-cover { max-width: 380px; }
 }
 
 /* Laptop-Viewport Optimierungen */
@@ -121,7 +121,7 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
   .hero { grid-template-columns: 1fr 1fr; padding: 3rem 2.6rem; gap: 2.6rem; }
   .hero.full { padding-top: 2.6rem; padding-bottom: 2.6rem; }
   .hero .hero-illustration-card { max-width: 720px; justify-self: start; }
-  .hero .hero-cover { max-width: 640px; justify-self: start; }
+  .hero .hero-cover { max-width: 320px; justify-self: start; }
   .hero .hero-content { max-width: 600px; }
   .cta-row .btn { padding: 0.75rem 1.1rem; font-size: 0.92rem; }
 }
