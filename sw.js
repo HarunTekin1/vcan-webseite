@@ -1,23 +1,19 @@
 // Basic offline cache for static assets
-const CACHE_NAME = 'vcan-static-v137';
+const CACHE_NAME = 'vcan-static-v140';
 const ASSETS = [
   'index.html','vision.html','kontakt.html','impressum.html','datenschutz.html','agb.html','offline.html','admin.html','fuer-user.html',
   'partner.html','en/index.html',
   'styles.css','app.js','manifest.json',
   'assets/vcan-logo.jpg','assets/icon-192.png','assets/icon-512.png','assets/favicon.svg',
+  // Keep hero-1 as a variant; hero image removed from precache per request
   'assets/hero-1.jpg',
-  'assets/hero-1.jpg?v=134',
-  'assets/hero%202.jpg?v=135',
-  'assets/hero-2.jpg?v=136',
-  'assets/hero-2-generated.svg?v=2',
   // New illustrations
   'assets/illus-community.svg','assets/illus-dialog.svg','assets/illus-hands.svg','assets/illus-features.svg',
   'assets/illus-empower.svg','assets/illus-scale.svg','assets/illus-team.svg','assets/illus-people-friendly.svg',
   // Hero photo variants
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.avif',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.avif',
-  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.avif'
-  ,
+  'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.avif',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-640.webp',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-960.webp',
   'assets/optimized/41819f8e-51e3-4c75-915e-e11dbbeeb64f-1280.webp',
