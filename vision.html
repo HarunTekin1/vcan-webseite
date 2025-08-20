@@ -126,5 +126,26 @@
       });
     });
   </script>
+  <!-- Temporary helper: unregister any active service worker once so clients fetch updated assets -->
+  <script>
+    (function(){
+      try{
+        if(sessionStorage.getItem('vcan_sw_unregistered') === '1') return;
+        if('serviceWorker' in navigator){
+          navigator.serviceWorker.getRegistrations().then(function(regs){
+            return Promise.all(regs.map(function(r){ return r.unregister(); }));
+          }).then(function(){
+            sessionStorage.setItem('vcan_sw_unregistered','1');
+            // Replace URL without query to get the canonical page after SW is removed
+            var base = location.href.split('?')[0];
+            location.replace(base);
+          }).catch(function(){
+            sessionStorage.setItem('vcan_sw_unregistered','1');
+            try{ location.replace(location.href.split('?')[0]); }catch(e){}
+          });
+        }
+      }catch(e){}
+    })();
+  </script>
 </body>
 </html>
