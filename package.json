@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"No tests\"",
-  "optimize:images": "node scripts/optimize-images.js"
+    "optimize:images": "node scripts/optimize-images.js",
+    "deploy": "firebase deploy --only hosting",
+    "deploy:preview": "firebase hosting:channel:deploy staging --expires 7d"
   },
   "repository": {
     "type": "git",
