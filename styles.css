@@ -112,6 +112,34 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 :root.dark .hero-cover { background:#12353a; }
 .hero-cover img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border-radius:0 !important; }
 
+/* Decorative hero variant when no raster image is used */
+.hero-decor { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); padding-bottom:3rem; }
+.hero-decor .hero-content { padding-right:1.2rem; }
+.hero-decor-panel { display:flex; align-items:center; justify-content:center; border-radius:var(--radius-l); overflow:hidden; aspect-ratio:21/9; background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.02)); box-shadow:var(--shadow-m); }
+.hero-decor-panel svg { width:100%; height:100%; display:block; }
+.hero-decor .cta-row .btn { margin-right:0.6rem; }
+
+/* Vision page: center the compact intro/hero area */
+.intro {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: clamp(2rem,6vw,4.5rem) clamp(1rem,5vw,3.5rem);
+  text-align:center;
+  background: transparent; /* keeps original bg */
+  min-height: calc(36vh - var(--header-h) / 4);
+}
+.intro .hero-content {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px){
+  .intro { padding: 1.6rem 1rem; min-height: auto; }
+  .intro .hero-content { padding: 0; }
+}
+
 /* Subtle sharpness/clarity boost for photos */
 .img-sharp-lite { filter: contrast(1.04) saturate(1.06) url(#sharp-lite); will-change: filter; }
 @media (prefers-contrast: more){

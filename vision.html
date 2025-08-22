@@ -12,11 +12,11 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://example.com/vision.html" />
   <meta property="og:locale" content="de_DE" />
-  <meta property="og:image" content="assets/hero-2-generated.svg?v=2" />
+  <meta property="og:image" content="assets/illus-people-friendly.svg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="VCan – Unsere Vision" />
   <meta name="twitter:description" content="Wir verbinden Menschen in Umbrüchen – lokal wie global. Wohnen, Unterstützung, Empowerment, Mentoring." />
-  <meta name="twitter:image" content="assets/hero-2-generated.svg?v=2" />
+  <meta name="twitter:image" content="assets/illus-people-friendly.svg" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -46,14 +46,12 @@
     </nav>
   </header>
   <main id="main" tabindex="-1">
-    <section class="hero" aria-labelledby="vision-hero-title">
-      <div class="hero-content">
+    <!-- Hero removed by request: compact intro instead -->
+    <section class="intro" aria-labelledby="vision-hero-title">
+      <div class="hero-content" style="padding:2rem 0;">
         <h1 id="vision-hero-title">Unsere Vision</h1>
         <p class="tagline">Niemand muss den Neuanfang allein schaffen. Wir verbinden Menschen in Umbrüchen – lokal wie global.</p>
         <p style="max-width:60ch;margin:0;opacity:.95">Gemeinschaft statt Einsamkeit. Erfahrung statt nur Algorithmen. Mitgefühl statt Ausgrenzung.</p>
-      </div>
-      <div class="hero-media hero-cover">
-  <img class="img-sharp-lite" src="assets/hero-2-generated.svg?v=2" alt="Hero: Menschen verbinden" loading="eager" decoding="async" onerror="this.onerror=null;this.src='assets/illus-people-friendly.svg?v=2';" />
       </div>
     </section>
     <section class="feature-preview" aria-labelledby="vision-title">
@@ -117,6 +115,30 @@
     </div>
   </footer>
   <script src="app.js" defer></script>
+  <script>
+    // Wire the SW debug panel button (works without external tooling)
+    document.addEventListener('DOMContentLoaded', function(){
+      const btn = document.getElementById('swClearBtn');
+      const status = document.getElementById('swStatus');
+      if(!btn) return;
+      async function updateStatus(){
+        if('serviceWorker' in navigator){
+          const regs = await navigator.serviceWorker.getRegistrations();
+          status.textContent = regs.length ? `Service Worker: ${regs.length} registered` : 'Service Worker: none';
+        } else { status.textContent = 'Service Worker: not supported'; }
+      }
+      updateStatus();
+      btn.addEventListener('click', async ()=>{
+        status.textContent = 'Unregistering...';
+        if('serviceWorker' in navigator){
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for(const r of regs){ await r.unregister(); }
+        }
+        if(window.caches){ const keys = await caches.keys(); for(const k of keys) await caches.delete(k); }
+        status.textContent = 'Service Worker unregistered; caches cleared. Reload page.';
+      });
+    });
+  </script>
   <script defer>
     window.addEventListener('DOMContentLoaded',()=>{
       document.querySelectorAll('img[data-blur]').forEach(img=>{
@@ -124,6 +146,42 @@
         else { img.addEventListener('load',()=>img.classList.add('loaded'),{once:true}); }
       });
     });
+  </script>
+  <!-- SW debug panel (temporary) -->
+  <div id="sw-debug" style="position:fixed;right:12px;bottom:12px;background:rgba(0,0,0,0.7);color:#fff;padding:10px 12px;border-radius:8px;z-index:9999;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;font-size:13px;">
+    <div id="sw-debug-status">Service Worker: checking…</div>
+    <div style="margin-top:8px;display:flex;gap:8px;">
+      <button id="sw-debug-unreg" style="background:#e63946;border:none;color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer">Unregister & Clear</button>
+      <button id="sw-debug-hide" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer">Hide</button>
+    </div>
+  </div>
+  <script>
+    (async function(){
+      const statusEl = document.getElementById('sw-debug-status');
+      const btn = document.getElementById('sw-debug-unreg');
+      const hide = document.getElementById('sw-debug-hide');
+      function setStatus(t){ statusEl.textContent = 'Service Worker: ' + t; }
+      try{
+        if('serviceWorker' in navigator){
+          const regs = await navigator.serviceWorker.getRegistrations();
+          if(regs.length===0){ setStatus('no registrations'); }
+          else { setStatus(regs.map(r=>r.scope+' ('+(r.active? 'active':'idle')+')').join('; ')); }
+        } else { setStatus('not supported'); }
+      }catch(e){ setStatus('error'); }
+      btn.addEventListener('click', async ()=>{
+        setStatus('unregistering...');
+        try{
+          if('serviceWorker' in navigator){
+            const regs = await navigator.serviceWorker.getRegistrations();
+            for(const r of regs){ await r.unregister(); }
+          }
+          if(window.caches){ const keys = await caches.keys(); for(const k of keys){ await caches.delete(k); }}
+          setStatus('done — reload page');
+          location.reload(true);
+        }catch(e){ setStatus('failed'); console.error(e); }
+      });
+      hide.addEventListener('click',()=>{ document.getElementById('sw-debug').style.display='none'; });
+    })();
   </script>
   <!-- debug helpers removed -->
 </body>
