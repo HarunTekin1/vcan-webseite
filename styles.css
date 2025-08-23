@@ -121,11 +121,11 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
 
 /* Vision page: center the compact intro/hero area */
 .intro {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: clamp(2rem,6vw,4.5rem) clamp(1rem,5vw,3.5rem);
-  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1rem, 5vw, 3.5rem);
+  text-align: center;
   background: transparent; /* keeps original bg */
   min-height: calc(36vh - var(--header-h) / 4);
 }
@@ -133,13 +133,29 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
+  /* make the hero content a centered column */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
+.intro .hero-content p { max-width: 60ch; margin: 0 auto; opacity: .95; }
+
+/* stronger selector to ensure centering in case of overrides */
+.intro .hero-content h1,
+.intro .hero-content p,
+.intro .hero-content .tagline {
+  text-align: center;
+}
+
+/* Center feature list under articles for better alignment */
+article ul { text-align: center; list-style-position: inside; margin-left: 0; }
 
 @media (max-width: 640px){
   .intro { padding: 1.6rem 1rem; min-height: auto; }
   .intro .hero-content { padding: 0; }
 }
-
 /* Subtle sharpness/clarity boost for photos */
 .img-sharp-lite { filter: contrast(1.04) saturate(1.06) url(#sharp-lite); will-change: filter; }
 @media (prefers-contrast: more){
