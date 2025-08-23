@@ -184,5 +184,26 @@
     })();
   </script>
   <!-- debug helpers removed -->
+  <script>
+    // Defensive: force-center key elements at runtime to bypass stale CSS/HTML caches
+    (function(){
+      function forceCenter(){
+        try{
+          const hero = document.querySelector('.intro .hero-content');
+          if(hero){
+            // center tagline and the following paragraph
+            const tagline = hero.querySelector('.tagline');
+            if(tagline) tagline.style.textAlign = 'center';
+            const subs = Array.from(hero.querySelectorAll('p')).filter(p=>!p.classList.contains('tagline'));
+            if(subs.length) subs.forEach(p=>p.style.textAlign='center');
+          }
+          // center feature list under article
+          const featureList = document.querySelector('article ul');
+          if(featureList) { featureList.style.textAlign = 'center'; featureList.style.listStylePosition = 'inside'; }
+        }catch(e){ console.warn('forceCenter failed', e); }
+      }
+      if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', forceCenter); else forceCenter();
+    })();
+  </script>
 </body>
 </html>
