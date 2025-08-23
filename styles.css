@@ -260,7 +260,26 @@ article ul { text-align: center; list-style-position: inside; margin-left: 0; }
 
 /* Legal pages: image + text grid (for Impressum) */
 .legal-media-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:0.8rem; }
-.legal-media-item { background:var(--c-surface); border:1px solid #e1eff0; border-radius:var(--radius-m); box-shadow:var(--shadow-s); padding:0.85rem; }
+  .legal-media-item {
+    background: var(--c-surface);
+    border: 1px solid #e1eff0;
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-s);
+    padding: 0.85rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-direction: row;
+  }
+  .legal-media-item .section-illustration { margin: 0; flex: 0 0 140px; }
+  .legal-media-item .section-illustration img { width: 100%; height: auto; display: block; border-radius: 10px; }
+  .legal-media-item h3 { margin: 0 0 0.25rem 0; }
+  .legal-media-item p { margin: 0; color: var(--c-text-soft); }
+
+  @media (max-width: 640px) {
+    .legal-media-item { flex-direction: column; align-items: flex-start; }
+    .legal-media-item .section-illustration { flex: none; width: 100%; max-width: 280px; }
+  }
 :root.dark .legal-media-item { background:#1e3d41; border-color:#2b5c62; }
 .legal-media-item figure { margin:0 0 0.5rem; }
 .legal-media-item figcaption { margin-top:0.35rem; font-size:0.85rem; color:var(--c-text-soft); }
