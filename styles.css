@@ -135,6 +135,26 @@ body { margin:0; background:var(--c-bg); color:var(--c-text); -webkit-font-smoot
   margin: 0 auto;
 }
 
+/* Ensure intro text is centered and readable */
+.intro .hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.intro .hero-content p { max-width: 60ch; margin: 0 auto; opacity: .95; }
+
+/* stronger selector to ensure centering in case of overrides */
+.intro .hero-content h1,
+.intro .hero-content p,
+.intro .hero-content .tagline {
+  text-align: center;
+}
+
+/* Center feature list under articles for better alignment */
+article ul { text-align: center; list-style-position: inside; margin-left: 0; }
+
 @media (max-width: 640px){
   .intro { padding: 1.6rem 1rem; min-height: auto; }
   .intro .hero-content { padding: 0; }
