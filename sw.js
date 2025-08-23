@@ -24,9 +24,24 @@ const ASSETS = [
   'assets/vision-hero-user/images.png'
 ];
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())
-  );
+  e.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    // Add assets one-by-one and tolerate failures so install doesn't fail
+    for (const asset of ASSETS) {
+      try {
+        const res = await fetch(asset, { cache: 'no-cache' });
+        if (res && res.ok) {
+          await cache.put(asset, res.clone());
+        } else {
+          // Log which assets failed to fetch so you can fix them
+          console.warn('ServiceWorker: failed to fetch', asset, res && res.status);
+        }
+      } catch (err) {
+        console.warn('ServiceWorker: fetch error', asset, err);
+      }
+    }
+    await self.skipWaiting();
+  })());
 });
 self.addEventListener('activate', e => {
   e.waitUntil(
