@@ -3,7 +3,7 @@
 // Generates a short promotional video using existing images and branding
 // Usage: node scripts/generate-video.js
 
-import { existsSync, mkdirSync, readFileSync } from 'fs';
+import { existsSync, mkdirSync, copyFileSync } from 'fs';
 import { execSync } from 'child_process';
 import path from 'path';
 
@@ -18,7 +18,6 @@ const VIDEO_CONFIG = {
   width: 1920,
   height: 1080,
   videoBitrate: '2M',
-  audioBitrate: '128k',
 };
 
 // Text overlays configuration
@@ -153,7 +152,7 @@ function addHeroImageOverlay(inputVideo, outputVideo) {
   if (!existsSync(heroImage)) {
     console.warn('Warning: Hero image not found, skipping image overlay');
     // Just copy the input to output if no hero image
-    execSync(`cp "${inputVideo}" "${outputVideo}"`, { stdio: 'inherit' });
+    copyFileSync(inputVideo, outputVideo);
     return;
   }
   
@@ -188,7 +187,7 @@ function generateWebM(inputVideo, outputVideo) {
 /**
  * Main video generation function
  */
-async function generateVideo() {
+function generateVideo() {
   console.log('🎬 Starting VCan promotional video generation...\n');
   
   const startTime = Date.now();
