@@ -30,6 +30,28 @@ Danach Browser: http://localhost:5500/
 - Lighthouse / Performance Feinschliff
 - Optional: Service Worker (Offline / Add To Home Screen)
 
+## Medien-Generierung
+
+### Videos
+Promo-Videos für VCan können automatisch generiert werden:
+
+```bash
+npm run generate:video
+```
+
+**Voraussetzung:** ffmpeg muss installiert sein (`sudo apt-get install ffmpeg`)
+
+Die generierten Videos werden in `assets/videos/` gespeichert und sind bereits in `kooperationspartner.html` eingebunden.
+
+### Bilder
+Bilder können für bessere Web-Performance optimiert werden:
+
+```bash
+npm run optimize:images
+```
+
+Mehr Details zu den Scripts in `scripts/README.md`.
+
 ## Deployment (GitHub Pages)
 1. Repository erstellen (z.B. vcan-website)
 2. Dateien pushen (main Branch)
