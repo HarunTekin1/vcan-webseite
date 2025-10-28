@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCan Video Demo</title>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #26c6da 0%, #0097a7 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1200px;
+            text-align: center;
+        }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        .video-wrapper {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        video {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .info h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .info p {
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+        .tech-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .spec {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .spec-label {
+            font-weight: 600;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .spec-value {
+            font-size: 1.2rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VCan Promo-Video</h1>
+        <p class="subtitle">Automatisch generiert mit ffmpeg</p>
+        
+        <div class="video-wrapper">
+            <video controls poster="assets/41819f8e-51e3-4c75-915e-e11dbbeeb64f.jpg" id="promoVideo">
+                <source src="assets/videos/vcan-promo.webm" type="video/webm">
+                <source src="assets/videos/vcan-promo.mp4" type="video/mp4">
+                Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+        </div>
+
+        <div class="info">
+            <h2>Über dieses Video</h2>
+            <p>
+                Dieses Video wurde vollautomatisch mit dem Script 
+                <code>npm run generate:video</code> erstellt. Es nutzt ffmpeg, 
+                um ein professionelles Promo-Video mit Text-Overlays, 
+                VCan-Branding und einem Gradient-Hintergrund zu generieren.
+            </p>
+
+            <div class="tech-specs">
+                <div class="spec">
+                    <div class="spec-label">Dauer</div>
+                    <div class="spec-value">15 Sekunden</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Auflösung</div>
+                    <div class="spec-value">1920x1080</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Format</div>
+                    <div class="spec-value">MP4 & WebM</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-label">Dateigröße</div>
+                    <div class="spec-value">~206 KB (MP4)</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;">
+                <strong>Video-Inhalte:</strong><br>
+                ✓ VCan Branding mit Gradient-Hintergrund<br>
+                ✓ Vier Text-Overlay-Sequenzen mit Fade-Effekten<br>
+                ✓ Hero-Bild als Picture-in-Picture<br>
+                ✓ Optimiert für Web-Performance
+            </p>
+        </div>
+
+        <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+    </div>
+
+    <script>
+        // Auto-play video when loaded (with user interaction)
+        const video = document.getElementById('promoVideo');
+        
+        // Show which format is being used
+        video.addEventListener('loadedmetadata', () => {
+            const currentSrc = video.currentSrc;
+            const format = currentSrc.includes('.webm') ? 'WebM (VP9)' : 'MP4 (H.264)';
+            console.log('Playing format:', format);
+        });
+    </script>
+</body>
+</html>
