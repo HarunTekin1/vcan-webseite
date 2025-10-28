@@ -12,3 +12,7 @@ node_modules/
 # Env / Secrets (derzeit keine vorhanden)
 .env
 .env.*
+
+# Generated videos (can be regenerated with npm run generate:video)
+assets/videos/*.mp4
+assets/videos/*.webm
